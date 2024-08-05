@@ -1,13 +1,6 @@
-# Sample Project
+# PACEToolkit - hackweek 2024
 
-This is an example of how teams can structure their project repositories and format their project README.md file.
-
-When creating a project repository from this template choose "Public" so other participants can follow progress. Add a "topic" to your repository details (click on the gear icon next to the "About" section on the repository page) to help others find your work (e.g. `icesat2-hackweek-2024`).
-
-
-## Files and folders in your project repository
-
-This template provides the following suggested organizaiton structure for the project repository, but each project team is free to organize their repository as they see fit.
+## Files and folders
 
 * **`contributors/`**
 <br> Each team member can create their own folder under contributors, within which they can work on their own scripts, notebooks, and other files. Having a dedicated folder for each person helps to prevent conflicts when merging with the main branch. This is a good place for team members to start off exploring data and methods for the project.
@@ -24,53 +17,37 @@ This template provides the following suggested organizaiton structure for the pr
 * `model-card.md`
 <br> Description (following a metadata standard) of any machine learning models used in the project
 
-# Recommended content for your README.md file:
+## Tools and tutorials for end users
 
-(you can remove the content here and above from your final project README.md file so that it begins with the Project or Team Name title below)
+We are a team representing diverse end users of PACE data. We will be collaborating on tools and tutorials that would help our end users access and use PACE data. 
 
-# Project or Team Name
+Ideas:
 
-## Project Title and Introduction
-
-Provide a brief introduction describing the proposed work. Be sure to also decribe what skills team members will get to learn and practice as part of this project.
-
+* Given a track (e.g. KML file) get PACE data and output in a format familiar to the end user
+* Create a data cube that is ready for a machine-learning or statistics application. Save in a format familiar for end users.
+* Take the [earthaccess tutorial](https://pacehackweek.github.io/pace-2024/presentations/hackweek/earthdata_cloud_access.html) and re-write using data for one of our end user groups.
+* Make a tutorial showing how to re-grid level-3 PACE data so that it can be used with model data on a different grid.
+* Make a tutorial showing how to create a time-series for a region defined by a shape file. Combine [this](https://nmfs-opensci.github.io/EDMW-EarthData-Workshop-2024/tutorials/python/3-extract-satellite-data-within-boundary.html) and [this](https://nmfs-opensci.github.io/EDMW-EarthData-Workshop-2024/tutorials/python/4-data-cubes.html)
+* Make a time series comparing PACE Chl-a and some other Chl-a product.
+  
 ### Collaborators
 
-List all participants on the project. Here is a good space to share your personal goals for the hackweek and things you can help with.
-
-| Name | Personal goals | Can help with | Role |
+| Name | Affiliation | Interests and end users | Links |
 | ------------- | ------------- | ------------- | ------------- |
-| Katherine J. | I want to learn specific python libraries for working with these data  | I can help with understanding our dataset, programming in R  | Project Lead |
-| Rosalind F. | Practice leading a software project | machine learning and python (scipy, scikit-learn) | Project Lead |
-| Alan T. | learning about your dataset | GitHub, Jupyter, cloud computing | Project Helper |
-| Rachel C. | learn to use github, resolve merge conflicts | I am familiar with our dataset | Team Member  |
-| ... | ... | ... | ... |
-| ... | ... | ... | ... |
+| Eli Holmes :github: | NOAA Fisheries, Office of Science and Technology  | I can help with understanding our dataset, programming in R  | [website](https://eeholmes.github.io/) [EDM Workshop](https://nmfs-opensci.github.io/EDMW-EarthData-Workshop-2024/) |
+| Prem Maheshwarkar |  |  |  |
+| Thiago Nobrega |  |  |  |
+| Bingqing Liu |  |  |  [HyperCoast](https://hypercoast.org/) |
+| Jiaxu Zhang | |  |  |
+| Rui |   |   |   |
+| Han Huynh |   |   |   |
 
-### The problem
-
-Provide a few sentences describing the problem are you going to explore. If this is a technical exploration of software or data science methods, explain why this work is important in a broader context and specific applications of this work.
-
-## Data and Methods
-
-### Data
-
-Briefly describe and provide citations for the data that will be used (size, format, how to access).
-
-### Existing methods
-
-How would you or others traditionally try to address this problem? Provide any relevant citations to prior work.
-
-### Proposed methods/tools
-
-What new approaches would you like to implement for addressing your specific question(s) or application(s)?
-
-Will your project use machine learning methods? If so, we invite you to create a [model card](model-card.md)!
 
 ### Additional resources or background reading
 
-Optional: links to manuscripts or technical documents providing background information, context, or other relevant information.
+* [HyperCoast](https://hypercoast.org/)
 
+<!--
 ## Project goals and tasks
 
 ### Project goals
@@ -97,3 +74,4 @@ What are the individual tasks or steps that need to be taken to achieve each of 
 Use this section to briefly summarize your project results. This could take the form of describing the progress your team made to answering a research question, developing a tool or tutorial, interesting things found in exploring a new dataset, lessons learned for applying a new method, personal accomplishments of each team member, or anything else the team wants to share.
 
 You could include figures or images here, links to notebooks or code elsewhere in the repository (such as in the [notebooks](notebooks/) folder), and information on how others can run your notebooks or code.
+-->
