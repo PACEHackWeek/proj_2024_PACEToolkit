@@ -34,7 +34,7 @@ Ideas:
 
 | Name | Affiliation | Interests and end users | Links |
 | ------------- | ------------- | ------------- | ------------- |
-| [Eli Holmes](https://github.com/eeholmes) | NOAA Fisheries, Office of Science and Technology  | Fisheries scientists who want time series and point values to match tracks.  | [website](https://eeholmes.github.io/) [EDM Workshop](https://nmfs-opensci.github.io/EDMW-EarthData-Workshop-2024/) |
+| [Eli Holmes](https://github.com/eeholmes) | NOAA Fisheries, Office of Science and Technology  | Fisheries scientists who want time series and point values to match tracks.  | [website](https://eeholmes.github.io/) |
 | [Prem Maheshwarkar](https://github.com/pmaheshwarkar) |  |  |  |
 | [Thiago Nobrega](https://github.com/thiago-vg) |  |  |  |
 | [Bingqing Liu](https://github.com/bingqing-liu) |  |  |  [HyperCoast](https://hypercoast.org/) |
@@ -46,7 +46,9 @@ Ideas:
 ### Additional resources or background reading
 
 * [HyperCoast](https://hypercoast.org/)
-
+* [EDM Workshop](https://nmfs-opensci.github.io/EDMW-EarthData-Workshop-2024/) -- tutorials that we can adapt
+* [CoastWatch[(https://github.com/coastwatch-training/CoastWatch-Tutorials) -- lots of Python tutorials on some typical science tasks with remote-sensing data
+  
 <!--
 ## Project goals and tasks
 
