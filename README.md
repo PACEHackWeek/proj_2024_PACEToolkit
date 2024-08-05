@@ -34,13 +34,13 @@ Ideas:
 
 | Name | Affiliation | Interests and end users | Links |
 | ------------- | ------------- | ------------- | ------------- |
-| Eli Holmes :github: | NOAA Fisheries, Office of Science and Technology  | I can help with understanding our dataset, programming in R  | [website](https://eeholmes.github.io/) [EDM Workshop](https://nmfs-opensci.github.io/EDMW-EarthData-Workshop-2024/) |
-| Prem Maheshwarkar |  |  |  |
-| Thiago Nobrega |  |  |  |
-| Bingqing Liu |  |  |  [HyperCoast](https://hypercoast.org/) |
-| Jiaxu Zhang | |  |  |
-| Rui |   |   |   |
-| Han Huynh |   |   |   |
+| [Eli Holmes](https://github.com/eeholmes) | NOAA Fisheries, Office of Science and Technology  | Fisheries scientists who want time series and point values to match tracks.  | [website](https://eeholmes.github.io/) [EDM Workshop](https://nmfs-opensci.github.io/EDMW-EarthData-Workshop-2024/) |
+| [Prem Maheshwarkar](https://github.com/pmaheshwarkar) |  |  |  |
+| [Thiago Nobrega](https://github.com/thiago-vg) |  |  |  |
+| [Bingqing Liu](https://github.com/bingqing-liu) |  |  |  [HyperCoast](https://hypercoast.org/) |
+| [Jiaxu Zhang](https://github.com/JiaxuZ) | |  |  |
+| [Rui](https://github.com/RuiJinSZ) |   |   |   |
+| [Han Huynh](https://github.com/hnhuynh55) |   |   |   |
 
 
 ### Additional resources or background reading
