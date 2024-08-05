@@ -1,5 +1,17 @@
 # PACEToolkit - hackweek 2024
 
+To clone this into the JupyterHub. Open a terminal (big button on the Launcher).
+
+```
+cd ~
+git clone https://github.com/PACEHackWeek/proj_2024_PACEToolkit
+```
+
+To be able to push to the repo, run this from the terminal
+```
+gh-scoped-creds
+```
+
 ## Files and folders
 
 * **`contributors/`**
