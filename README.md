@@ -1,6 +1,6 @@
 # PACEToolkit - hackweek 2024
 
-To clone this into the JupyterHub. Open a terminal (big button on the Launcher).
+Note, all the earthaccess code will work fine on your laptop if you already have Python installed. We can edit `environment.yml` as we add needed modules. To clone this into the JupyterHub. Open a terminal (big button on the Launcher).
 
 ```
 cd ~
