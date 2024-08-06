@@ -1,0 +1,15 @@
+# Table of content
+# Learn more at https://jupyterbook.org/customize/toc.html
+root: intro
+format: jb-book
+parts:
+- caption: Tutorials
+  chapters:
+#    - file: contributors/eli/matchup_tracks.ipynb
+    - file: intro.md
+      title: Simple Track Matchup
+#- caption: Reference
+#  chapters:
+#    - file: reference/glossary
+#    - file: reference/questions
+
