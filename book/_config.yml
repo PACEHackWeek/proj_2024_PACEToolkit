@@ -1,0 +1,64 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: proj_2024_PACEToolkit
+author: PACEToolkit team
+logo: logo.png
+only_build_toc_files: false
+
+parse:
+  myst_substitutions:
+    github_org_url: "https://github.com/PACEHackWeek"
+    book_repo: "proj_2024_PACEToolkit"
+    website_url: "https://PACEHackWeek.github.io/proj_2024_PACEToolkit"
+  myst_enable_extensions:
+    # Defaults
+    - dollarmath
+    - linkify
+    - substitution
+    - colon_fence
+    # Extras
+    - html_image
+
+# See https://jupyterbook.org/content/execute.html
+execute:
+  # NOTE: 'cache' to use jupyter-cache, or 'force' to run all
+  execute_notebooks: off
+  exclude_patterns:
+    - "**/*.ipynb"
+  allow_errors: true
+  # Per-cell notebook execution limit (seconds)
+  timeout: 300
+  
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: book.tex
+
+# Information about where the book exists on the web
+repository:
+  url: "https://github.com/PACEHackWeek/proj_2024_PACEToolkit"
+  path_to_book: book  # Optional path to your book, relative to the repository root
+  branch: main
+
+# Bibliography
+bibtex_bibfiles:
+  - references.bib
+sphinx:
+  config:
+    bibtex_reference_style: author_year  # or label, super, \supercite
+    nb_merge_streams: true # stdout lines combined in output
+    nb_custom_formats:
+      .ipynb:
+        - nbformat.reads
+        - as_version: 4
+        - false # setting to `true` breaks math for some reason, `false` uses MyST instead of Commmonmark
+
+# Add GitHub buttons to your book
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+html:
+  use_edit_page_button: true
+  use_issues_button: true
+  use_repository_button: true
+  favicon: "logo.png"
+  # google_analytics_id: G-XXXXXXXXX
