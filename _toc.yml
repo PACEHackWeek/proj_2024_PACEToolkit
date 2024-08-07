@@ -5,11 +5,8 @@ format: jb-book
 parts:
 - caption: Tutorials
   chapters:
-#    - file: contributors/eli/matchup_tracks.ipynb
-    - file: intro.md
-      title: Simple Track Matchup
-#- caption: Reference
-#  chapters:
-#    - file: reference/glossary
-#    - file: reference/questions
+    - file: notebooks/matchup_tracks.ipynb
+      title: Simple track matchup
+    - file: notebooks/PACE_Cyano.ipynb
+      title: Cyanobacteria bloom detection
 
