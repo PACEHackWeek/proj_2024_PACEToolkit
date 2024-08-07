@@ -6,5 +6,7 @@ parts:
 - caption: Tutorials
   chapters:
     - file: notebooks/matchup_tracks.ipynb
-      title: Simple Track Matchup
+      title: Simple track matchup
+    - file: notebooks/PACE_Cyano.ipynb
+      title: Cyanobacteria bloom detection
 
