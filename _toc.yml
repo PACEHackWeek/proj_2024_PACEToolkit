@@ -1,0 +1,14 @@
+# Table of content
+# Learn more at https://jupyterbook.org/customize/toc.html
+root: intro
+format: jb-book
+parts:
+- caption: Tutorials
+  chapters:
+    - file: notebooks/matchup_tracks.ipynb
+      title: Simple track matchup
+    - file: notebooks/PACE_Cyano.ipynb
+      title: Cyanobacteria bloom detection
+    - file: notebooks/Multi_sat_compare.ipynb
+      title: Chl-a products of multiple sources
+
