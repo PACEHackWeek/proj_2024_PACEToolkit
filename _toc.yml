@@ -9,4 +9,6 @@ parts:
       title: Simple track matchup
     - file: notebooks/PACE_Cyano.ipynb
       title: Cyanobacteria bloom detection
+    - file: notebooks/Multi_sat_compare.ipynb
+      title: Chl-a products of multiple sources
 
