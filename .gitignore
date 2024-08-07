@@ -2,7 +2,6 @@
 __pycache__/
 *.py[cod]
 *$py.class
-contributors/han-prem/AERONET_US_sites
 
 # C extensions
 *.so
