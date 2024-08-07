@@ -5,6 +5,11 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'notebooks/**'
+      - '_config.yml'
+      - '_toc.yml'
+      - '*.md'
 
 env:
   BASE_URL: /${{ github.event.repository.name }}
