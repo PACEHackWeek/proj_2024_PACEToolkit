@@ -1,10 +1,9 @@
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
 import cmocean
-from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
 
 def plot_regional_map(dataset, min_lon, max_lon, min_lat, max_lat, 
-                      title=None, colormap=cmocean.cm.thermal, vmin=-1.5, vmax=1.5, size=(5, 5), ax=None):
+                 title=None, colormap=cmocean.cm.thermal, vmin=-1.5, vmax=1.5, size=(5, 5), ax=None):
     """
     Plot a dataset within specified lat/lon boundaries.
 
@@ -31,9 +30,7 @@ def plot_regional_map(dataset, min_lon, max_lon, min_lat, max_lat,
     
     # Create a new figure if no axis is provided
     if ax is None:
-        fig, ax = plt.subplots(figsize=size, 
-                               subplot_kw={'projection': ccrs.LambertConformal(central_longitude=central_longitude, 
-                                                                               central_latitude=central_latitude)})
+        fig, ax = plt.subplots(figsize=size, subplot_kw={'projection': ccrs.LambertConformal(central_longitude=central_longitude, central_latitude=central_latitude)})
     
     # Set extent
     ax.set_extent([min_lon, max_lon, min_lat, max_lat], ccrs.PlateCarree())
@@ -46,7 +43,7 @@ def plot_regional_map(dataset, min_lon, max_lon, min_lat, max_lat,
     )
     
     # Color bar
-    cbar = plt.colorbar(cf, ax=ax, fraction=0.027, pad=0.04, orientation="horizontal")
+    cbar = plt.colorbar(cf, ax=ax, fraction=0.027, pad=0.045, orientation="horizontal")
     clabel = f"{dataset.long_name}\n{dataset.units}"
     cbar.set_label(clabel, rotation=0, labelpad=5)
     cbar.ax.tick_params(labelsize=8)
@@ -60,13 +57,14 @@ def plot_regional_map(dataset, min_lon, max_lon, min_lat, max_lat,
                       linewidth=0.1, color='k', alpha=1, linestyle='--')
     gl.top_labels = False
     gl.right_labels = False
+    gl.xlabel_style = {'size': 8}
+    gl.ylabel_style = {'size': 8}
     
     # Add coastlines
     ax.coastlines(linewidth=1)
     
-    # Adjust layout to ensure the colorbar and labels do not overlap
+    # Show plot if no axis is provided
     if ax is None:
-        plt.tight_layout()
         plt.show()
     
     # Return the map handle
