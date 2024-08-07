@@ -11,4 +11,6 @@ parts:
       title: Cyanobacteria bloom detection
     - file: notebooks/Multi_sat_compare.ipynb
       title: Chl-a products of multiple sources
+    - file: notebooks/POC_simple_regrid.ipynb
+      title: Simple regrid
 
