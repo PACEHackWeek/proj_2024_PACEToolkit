@@ -5,11 +5,6 @@ format: jb-book
 parts:
 - caption: Tutorials
   chapters:
-#    - file: contributors/eli/matchup_tracks.ipynb
-    - file: intro.md
+    - file: notebooks/matchup_tracks.ipynb
       title: Simple Track Matchup
-#- caption: Reference
-#  chapters:
-#    - file: reference/glossary
-#    - file: reference/questions
 
