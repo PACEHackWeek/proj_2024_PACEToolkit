@@ -1,8 +1,8 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: proj_2024_PACEToolkit
-author: PACEToolkit team
+title: PACEToolkit
+author: PACEToolkit HackWeek 2024 team
 logo: logo.png
 only_build_toc_files: false
 

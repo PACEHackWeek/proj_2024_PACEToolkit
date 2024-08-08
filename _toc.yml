@@ -15,4 +15,6 @@ parts:
       title: Simple PACE data manipulation
     - file: notebooks/visualize-in-situ-satellite-aerosol.ipynb
       title: Multi-source aerosol data visualization
+    - file: notebooks/Regrid_PACE_and_other_satellites.ipynb
+      title: Re-gridding PACE data
 
