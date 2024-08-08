@@ -22,7 +22,19 @@ See the Tutorials link in sidebar for our tutorials developed during the hackwee
 * [HyperCoast](https://hypercoast.org/)
 * [EDM Workshop](https://nmfs-opensci.github.io/EDMW-EarthData-Workshop-2024/) -- tutorials that we can adapt
 * [CoastWatch](https://github.com/coastwatch-training/CoastWatch-Tutorials) -- lots of Python tutorials on some typical science tasks with remote-sensing data
-  
+
+## To add notebooks
+
+1. Make sure your notebook has a markdown cell with a level 1 header at the top. For example
+```
+# My title
+```
+2. Do not include any html, like `<div>` or `<h1>` in your notebook. It will break the book build.
+2. Add your notebook to the `notebooks` folder
+3. Add your notebook to the `_toc.yml` file
+4. Push to the repo and the book will automatically rebuild.
+5. Watch the Actions tab on the repo to see when the rebuild is finished.
+   
 ## To build book
 
 Do `pip install ghp-import` if needed. Then build book and push to GitHub. Set Pages to use gh-pages branch.
