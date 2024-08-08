@@ -113,3 +113,4 @@ venv.bak/
 * jupyterbook
 _build
 
+data/occci_v6_daily_1km.nc
