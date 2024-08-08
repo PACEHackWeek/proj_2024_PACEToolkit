@@ -1,19 +1,19 @@
-# PACEToolkit
+# proj_2024_PACEToolkit
 
-We are a team representing diverse end users of PACE data. During PACE HackWeek 2024, we  collaborated on tools and tutorials that would help our end users access and use PACE data. 
+We are a team representing diverse end users of PACE data. We will be collaborating on tools and tutorials that would help our end users access and use PACE data. 
 
-See the Tutorials link in sidebar for our tutorials developed during the hackweek. See the `scripts` folder in the repo for functions that we created.
+See the Tutorials link in sidebar for our tutorials developed during the hackweek.
 
 ### Collaborators
 
 | Name | Affiliation | Tutorial | Links |
 | ------------- | ------------- | ------------- | ------------- |
 | [Eli Holmes](https://github.com/eeholmes) | NOAA Fisheries, Office of Science and Technology  | Simple matchup on tracks  | [website](https://eeholmes.github.io/) |
-| [Prem Maheshwarkar](https://github.com/pmaheshwarkar) | Universite Paris Est Creteil Val de Marne | Visualization multi-source aerosols |  |
-| [Thiago Nobrega](https://github.com/thiago-vg) | University of Sao Paulo | Re-gridding PACE data |  |
-| [Bingqing Liu](https://github.com/bingqing-liu) |University of Louisiana Lafayette  |CyanoHABs |  [HyperCoast](https://hypercoast.org/) |
+| [Prem Maheshwarkar](https://github.com/pmaheshwarkar) | Universite Paris Est Creteil Val de Marne | Multi-source aerosol data visualization |  |
+| [Thiago Nobrega](https://github.com/thiago-vg) | University of Sao Paulo | More re-gridding |  |
+| [Bingqing Liu](https://github.com/bingqing-liu) |University of Louisiana Lafayette  |CyanoHABs  |  [HyperCoast](https://hypercoast.org/) |
 | [Jiaxu Zhang](https://github.com/JiaxuZ) | University of Washington (CICOES)/NOAA PMEL | Chl-a products of multiple sources  |  |
-| [Rui Jin](https://github.com/RuiJinSZ) |  University of Washington (CICOES) | Simple data manipulations  |  [website](https://ruijinsz.github.io/) |
+| [Rui Jin](https://github.com/RuiJinSZ) |  University of Washington (CICOES) | Simple re-grid  |   |
 | [Han Huynh](https://github.com/hnhuynh55) | University of Colorado at Boulder (CIRES)/NOAA CSL  |  Visualization multi-source aerosols |   |
 
 
