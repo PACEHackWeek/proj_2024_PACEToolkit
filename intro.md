@@ -1,7 +1,5 @@
 # PACEToolkit
 
-<img src="qr-pace.png" alt="QR" style="float: right"/>
-
 We are a team representing diverse end users of PACE data. During PACE Hackweek 2024, we collaborating on tools and tutorials that would help our end users access and use PACE data. 
 
 See the Tutorials link in sidebar for our tutorials developed during the hackweek. See the `scripts` folder for functions we created.
