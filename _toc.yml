@@ -11,7 +11,7 @@ parts:
       title: Cyanobacteria bloom detection
     - file: notebooks/Multi_sat_compare.ipynb
       title: Chl-a products of multiple sources
-    - file: notebooks/POC_simple_manipulation.ipynb
+    - file: notebooks/POC_data_manipulation.ipynb
       title: Simple PACE data manipulation
     - file: notebooks/visualize-in-situ-satellite-aerosol.ipynb
       title: Multi-source aerosol data visualization

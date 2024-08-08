@@ -9,7 +9,7 @@ See the Tutorials link in sidebar for our tutorials developed during the hackwee
 | Name | Affiliation | Tutorial | Links |
 | ------------- | ------------- | ------------- | ------------- |
 | [Eli Holmes](https://github.com/eeholmes) | NOAA Fisheries, Office of Science and Technology  | Simple matchup on tracks  | [website](https://eeholmes.github.io/) |
-| [Prem Maheshwarkar](https://github.com/pmaheshwarkar) | Universite Paris Est Creteil Val de Marne | Visualization multi-source aerosols |  |
+| [Prem Maheshwarkar](https://github.com/pmaheshwarkar) | Universite Paris Est Creteil Val de Marne | Multi-source aerosol data visualization |  |
 | [Thiago Nobrega](https://github.com/thiago-vg) | University of Sao Paulo | More re-gridding |  |
 | [Bingqing Liu](https://github.com/bingqing-liu) |University of Louisiana Lafayette  |CyanoHABs  |  [HyperCoast](https://hypercoast.org/) |
 | [Jiaxu Zhang](https://github.com/JiaxuZ) | University of Washington (CICOES)/NOAA PMEL | Chl-a products of multiple sources  |  |
