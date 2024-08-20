@@ -18,8 +18,9 @@ See the Tutorials link in sidebar of our Jupyter Book or the `notenooks` folder 
 
 ### Additional resources or background reading
 
+* [Our JupyterBook](https://pacehackweek.github.io/proj_2024_PACEToolkit)
 * [HyperCoast](https://hypercoast.org/)
-* [EDM Workshop](https://nmfs-opensci.github.io/EDMW-EarthData-Workshop-2024/) -- tutorials that we can adapt
+* [EDM Workshop](https://nmfs-opensci.github.io/EDMW-EarthData-Workshop-2024/) -- similar tutorials
 * [CoastWatch](https://github.com/coastwatch-training/CoastWatch-Tutorials) -- lots of Python tutorials on some typical science tasks with remote-sensing data
 
 
@@ -54,13 +55,6 @@ gh-scoped-creds
 * `model-card.md`
 <br> Description (following a metadata standard) of any machine learning models used in the project
 
-
-### Additional resources or background reading
-
-* [Our JupyterBook](https://pacehackweek.github.io/proj_2024_PACEToolkit)
-* [HyperCoast](https://hypercoast.org/)
-* [EDM Workshop](https://nmfs-opensci.github.io/EDMW-EarthData-Workshop-2024/) -- tutorials that we can adapt
-* [CoastWatch](https://github.com/coastwatch-training/CoastWatch-Tutorials) -- lots of Python tutorials on some typical science tasks with remote-sensing data
 
 ## To add notebooks
 
