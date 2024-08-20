@@ -1,5 +1,30 @@
 # PACEToolkit - hackweek 2024
 
+We are a team representing diverse end users of PACE data. During PACE Hackweek 2024, we collaborating on tools and tutorials that would help our end users access and use PACE data. 
+
+See the Tutorials link in sidebar of our Jupyter Book or the `notenooks` folder for our tutorials developed during the hackweek. See the `scripts` folder for functions we created.
+
+### Collaborators
+
+| Name | Affiliation | Tutorial | Links |
+| ------------- | ------------- | ------------- | ------------- |
+| [Eli Holmes](https://github.com/eeholmes) | NOAA Fisheries, Office of Science and Technology  | Simple matchup on tracks  | [website](https://eeholmes.github.io/) |
+| [Prem Maheshwarkar](https://github.com/pmaheshwarkar) | Universite Paris Est Creteil Val de Marne | Multi-source aerosol data visualization |  |
+| [Thiago Nobrega](https://github.com/thiago-vg) | University of Sao Paulo | Re-gridding PACE data |  |
+| [Bingqing Liu](https://github.com/bingqing-liu) |University of Louisiana Lafayette  |CyanoHABs  |  [HyperCoast](https://hypercoast.org/) [website](https://bingqingliu.com/) |
+| [Jiaxu Zhang](https://github.com/JiaxuZ) | University of Washington (CICOES)/NOAA PMEL | Chl-a products of multiple sources  |  |
+| [Rui Jin](https://github.com/RuiJinSZ) |  University of Washington (CICOES) | Simple PACE data manipulation  | [website](https://ruijinsz.github.io/)  |
+| [Han Huynh](https://github.com/hnhuynh55) | University of Colorado at Boulder (CIRES)/NOAA CSL  |  Multi-source aerosol data visualization |   |
+
+### Additional resources or background reading
+
+* [HyperCoast](https://hypercoast.org/)
+* [EDM Workshop](https://nmfs-opensci.github.io/EDMW-EarthData-Workshop-2024/) -- tutorials that we can adapt
+* [CoastWatch](https://github.com/coastwatch-training/CoastWatch-Tutorials) -- lots of Python tutorials on some typical science tasks with remote-sensing data
+
+
+## Running notebook on CryoCloud
+
 Note, all the earthaccess code will work fine on your laptop if you already have Python installed. We can edit `environment.yml` as we add needed modules. To clone this into the JupyterHub. Open a terminal (big button on the Launcher).
 
 ```
@@ -29,63 +54,33 @@ gh-scoped-creds
 * `model-card.md`
 <br> Description (following a metadata standard) of any machine learning models used in the project
 
-## Tools and tutorials for end users
-
-We are a team representing diverse end users of PACE data. We will be collaborating on tools and tutorials that would help our end users access and use PACE data. 
-
-Ideas:
-
-* Given a track (e.g. KML file) get PACE data and output in a format familiar to the end user
-* Create a data cube that is ready for a machine-learning or statistics application. Save in a format familiar for end users.
-* Take the [earthaccess tutorial](https://pacehackweek.github.io/pace-2024/presentations/hackweek/earthdata_cloud_access.html) and re-write using data for one of our end user groups.
-* Make a tutorial showing how to re-grid level-3 PACE data so that it can be used with model data on a different grid.
-* Make a tutorial showing how to create a time-series for a region defined by a shape file. Combine [this](https://nmfs-opensci.github.io/EDMW-EarthData-Workshop-2024/tutorials/python/3-extract-satellite-data-within-boundary.html) and [this](https://nmfs-opensci.github.io/EDMW-EarthData-Workshop-2024/tutorials/python/4-data-cubes.html)
-* Make a time series comparing PACE Chl-a and some other Chl-a product.
-  
-### Collaborators
-
-| Name | Affiliation | Interests and end users | Links |
-| ------------- | ------------- | ------------- | ------------- |
-| [Eli Holmes](https://github.com/eeholmes) | NOAA Fisheries, Office of Science and Technology  | Fisheries scientists who want time series and point values to match tracks.  | [website](https://eeholmes.github.io/) |
-| [Prem Maheshwarkar](https://github.com/pmaheshwarkar) |  |  |  |
-| [Thiago Nobrega](https://github.com/thiago-vg) |  |  |  |
-| [Bingqing Liu](https://github.com/bingqing-liu) |  |  |  [HyperCoast](https://hypercoast.org/) |
-| [Jiaxu Zhang](https://github.com/JiaxuZ) | |  |  |
-| [Rui](https://github.com/RuiJinSZ) |   |   |   |
-| [Han Huynh](https://github.com/hnhuynh55) |   |   |   |
-
 
 ### Additional resources or background reading
 
+* [Our JupyterBook](https://pacehackweek.github.io/proj_2024_PACEToolkit)
 * [HyperCoast](https://hypercoast.org/)
 * [EDM Workshop](https://nmfs-opensci.github.io/EDMW-EarthData-Workshop-2024/) -- tutorials that we can adapt
 * [CoastWatch](https://github.com/coastwatch-training/CoastWatch-Tutorials) -- lots of Python tutorials on some typical science tasks with remote-sensing data
+
+## To add notebooks
+
+1. Make sure your notebook has a markdown cell with a level 1 header at the top. For example
+```
+# My title
+```
+2. Do not include any html, like `<div>` or `<h1>` in your notebook. It will break the book build.
+2. Add your notebook to the `notebooks` folder
+3. Add your notebook to the `_toc.yml` file
+4. Push to the repo and the book will automatically rebuild.
+5. Watch the Actions tab on the repo to see when the rebuild is finished.
+   
+## To build book
+
+Do `pip install ghp-import` if needed. Then build book and push to GitHub. Set Pages to use gh-pages branch.
+
+```
+jupyter-book build . --keep-going
+ghp-import -n -p -f _build/html
+```
+
   
-<!--
-## Project goals and tasks
-
-### Project goals
-
-List the specific project goals or research questions you want to answer. Think about what outcomes or deliverables you'd like to create (e.g. a series of tutorial notebooks demonstrating how to work with a dataset, results of an anaysis to answer a science question, an example of applying a new analysis method, or a new python package).
-
-* Goal 1
-* Goal 2
-* ...
-
-### Tasks
-
-What are the individual tasks or steps that need to be taken to achieve each of the project goals identified above? What are the skills that participants will need or will learn and practice to complete each of these tasks? Think about which tasks are dependent on prior tasks, or which tasks can be performed in parallel.
-
-* Task 1 (all team members will learn to use GitHub)
-* Task 2 (team members will use the scikit-learn python library)
-  * Task 2a (assigned to team member A)
-  * Task 2b (assigned to team member B)
-* Task 3
-* ...
-
-## Project Results
-
-Use this section to briefly summarize your project results. This could take the form of describing the progress your team made to answering a research question, developing a tool or tutorial, interesting things found in exploring a new dataset, lessons learned for applying a new method, personal accomplishments of each team member, or anything else the team wants to share.
-
-You could include figures or images here, links to notebooks or code elsewhere in the repository (such as in the [notebooks](notebooks/) folder), and information on how others can run your notebooks or code.
--->
