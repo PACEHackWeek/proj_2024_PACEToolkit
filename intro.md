@@ -17,13 +17,15 @@ See the Tutorials link in sidebar for our tutorials developed during the hackwee
 | [Han Huynh](https://www.linkedin.com/in/hannhuynh/) | University of Colorado at Boulder (CIRES)/NOAA CSL  |  Multi-source aerosol data visualization |  [<i class="fa-solid fa-globe"></i>](https://cires.colorado.edu/people/han-huynh) [<i class="fa-brands fa-orcid"></i>](https://orcid.org/0000-0002-2467-7134) [<i class="fa-brands fa-github"></i>](https://github.com/hnhuynh55) |
 
 
-### Additional resources or background reading
+### Additional resources
 
 * [HyperCoast](https://hypercoast.org/)
 * [EDM Workshop](https://nmfs-opensci.github.io/EDMW-EarthData-Workshop-2024/) -- tutorials that we can adapt
 * [CoastWatch](https://github.com/coastwatch-training/CoastWatch-Tutorials) -- lots of Python tutorials on some typical science tasks with remote-sensing data
 
-## To add notebooks
+### To collaborate
+
+**Add notebooks**
 
 1. Make sure your notebook has a markdown cell with a level 1 header at the top. For example
 ```
@@ -35,7 +37,7 @@ See the Tutorials link in sidebar for our tutorials developed during the hackwee
 4. Push to the repo and the book will automatically rebuild.
 5. Watch the Actions tab on the repo to see when the rebuild is finished.
    
-## To build book
+**To build book**
 
 Do `pip install ghp-import` if needed. Then build book and push to GitHub. Set Pages to use gh-pages branch.
 
