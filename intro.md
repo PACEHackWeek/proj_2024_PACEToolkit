@@ -45,3 +45,13 @@ Do `pip install ghp-import` if needed. Then build book and push to GitHub. Set P
 jupyter-book build . --keep-going
 ghp-import -n -p -f _build/html
 ```
+
+**To build pdf**
+
+```
+sudo apt-get install texlive-latex-extra \
+                     texlive-fonts-extra \
+                     texlive-xetex latexmk
+jupyter-book build . --builder pdflatex
+```
+
