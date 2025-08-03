@@ -1,20 +1,20 @@
 # PACEToolkit
 
-We are a team representing diverse end users of PACE data. During PACE Hackweek 2024, we collaborating on tools and tutorials that would help our end users access and use PACE data. 
+We are a team representing diverse end users of PACE data. During hackweeks, we haave collaborated on tools and tutorials that would help our end users access and use PACE data. 
 
 See the Tutorials link in sidebar for our tutorials developed during the hackweek. See the `scripts` folder for functions we created.
 
 ### Collaborators
 
-| Name | Affiliation | Tutorial | Links |
-| ------------- | ------------- | ------------- | ------------- |
-| [Eli Holmes](https://www.linkedin.com/in/elizabeth-eli-holmes-354b76/) | NOAA Fisheries, Office of Science and Technology  | Simple matchup on tracks  | [<i class="fa-solid fa-envelope"></i>](mailto:eli.holmes@noaa.gov) [<i class="fa-brands fa-orcid"></i>](https://orcid.org/0000-0001-9128-8393) [<i class="fa-solid fa-globe"></i>](https://eeholmes.github.io/) [<i class="fa-brands fa-github"></i>](https://github.com/eeholmes) |
-| [Prem Maheshwarkar](https://www.linkedin.com/in/prem-maheshwarkar-78b263128/?originalSubdomain=fr) | Universite Paris Est Creteil Val de Marne | Multi-source aerosol data visualization | [<i class="fa-brands fa-orcid"></i>](https://orcid.org/0000-0001-6708-7460) [<i class="fa-brands fa-github"></i>](https://github.com/pmaheshwarkar) |
-| Thiago Nobrega | University of Sao Paulo | Re-gridding PACE data | [<i class="fa-brands fa-github"></i>](https://github.com/thiago-vg) |
-| [Bingqing Liu](https://www.linkedin.com/in/bingqing-liu-02492027a/) |University of Louisiana Lafayette  |CyanoHABs  |  [HyperCoast](https://hypercoast.org/) [<i class="fa-solid fa-globe"></i>](https://bingqingliu.com/)  [<i class="fa-brands fa-orcid"></i>](https://orcid.org/0000-0003-4651-6996) [<i class="fa-brands fa-github"></i>](https://github.com/bingqing-liu) |
-| [Jiaxu Zhang](https://www.linkedin.com/in/jiaxuzhang/) | University of Washington (CICOES)/NOAA PMEL | Chl-a products of multiple sources  | [<i class="fa-solid fa-globe"></i>](https://www.pmel.noaa.gov/people/dr-jiaxu-zhang) [<i class="fa-brands fa-orcid"></i>](https://orcid.org/0000-0002-8564-3026) [<i class="fa-brands fa-github"></i>](https://github.com/JiaxuZ) |
-| Rui Jin |  University of Washington (CICOES) | Simple PACE data manipulation  | [<i class="fa-solid fa-globe"></i>](https://ruijinsz.github.io/) [<i class="fa-brands fa-orcid"></i>](https://orcid.org/0000-0001-9853-127X) [<i class="fa-brands fa-github"></i>](https://github.com/RuiJinSZ) |
-| [Han Huynh](https://www.linkedin.com/in/hannhuynh/) | University of Colorado at Boulder (CIRES)/NOAA CSL  |  Multi-source aerosol data visualization |  [<i class="fa-solid fa-globe"></i>](https://cires.colorado.edu/people/han-huynh) [<i class="fa-brands fa-orcid"></i>](https://orcid.org/0000-0002-2467-7134) [<i class="fa-brands fa-github"></i>](https://github.com/hnhuynh55) |
+| Name | Affiliation | Tutorial | Links | Even |
+| ------------- | ------------- | ------------- | ------------- | ---------- |
+| [Eli Holmes](https://www.linkedin.com/in/elizabeth-eli-holmes-354b76/) | NOAA Fisheries, Office of Science and Technology  | Simple matchup on tracks  | [<i class="fa-solid fa-envelope"></i>](mailto:eli.holmes@noaa.gov) [<i class="fa-brands fa-orcid"></i>](https://orcid.org/0000-0001-9128-8393) [<i class="fa-solid fa-globe"></i>](https://eeholmes.github.io/) [<i class="fa-brands fa-github"></i>](https://github.com/eeholmes) | PH24, OHW24, PH25 |
+| [Prem Maheshwarkar](https://www.linkedin.com/in/prem-maheshwarkar-78b263128/?originalSubdomain=fr) | Universite Paris Est Creteil Val de Marne | Multi-source aerosol data visualization | [<i class="fa-brands fa-orcid"></i>](https://orcid.org/0000-0001-6708-7460) [<i class="fa-brands fa-github"></i>](https://github.com/pmaheshwarkar) | PH24 |
+| Thiago Nobrega | University of Sao Paulo | Re-gridding PACE data | [<i class="fa-brands fa-github"></i>](https://github.com/thiago-vg) | PH24 |
+| [Bingqing Liu](https://www.linkedin.com/in/bingqing-liu-02492027a/) |University of Louisiana Lafayette  |CyanoHABs  |  [HyperCoast](https://hypercoast.org/) [<i class="fa-solid fa-globe"></i>](https://bingqingliu.com/)  [<i class="fa-brands fa-orcid"></i>](https://orcid.org/0000-0003-4651-6996) [<i class="fa-brands fa-github"></i>](https://github.com/bingqing-liu) | PH24 |
+| [Jiaxu Zhang](https://www.linkedin.com/in/jiaxuzhang/) | University of Washington (CICOES)/NOAA PMEL | Chl-a products of multiple sources  | [<i class="fa-solid fa-globe"></i>](https://www.pmel.noaa.gov/people/dr-jiaxu-zhang) [<i class="fa-brands fa-orcid"></i>](https://orcid.org/0000-0002-8564-3026) [<i class="fa-brands fa-github"></i>](https://github.com/JiaxuZ) | PH24 |
+| Rui Jin |  University of Washington (CICOES) | Simple PACE data manipulation  | [<i class="fa-solid fa-globe"></i>](https://ruijinsz.github.io/) [<i class="fa-brands fa-orcid"></i>](https://orcid.org/0000-0001-9853-127X) [<i class="fa-brands fa-github"></i>](https://github.com/RuiJinSZ) | PH24 |
+| [Han Huynh](https://www.linkedin.com/in/hannhuynh/) | University of Colorado at Boulder (CIRES)/NOAA CSL  |  Multi-source aerosol data visualization |  [<i class="fa-solid fa-globe"></i>](https://cires.colorado.edu/people/han-huynh) [<i class="fa-brands fa-orcid"></i>](https://orcid.org/0000-0002-2467-7134) [<i class="fa-brands fa-github"></i>](https://github.com/hnhuynh55) | PH24 |
 
 
 ### Additional resources
