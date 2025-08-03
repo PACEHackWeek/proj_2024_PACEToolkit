@@ -37,7 +37,7 @@ See the Tutorials link in sidebar for our tutorials developed during the hackwee
 4. Push to the repo and the book will automatically rebuild.
 5. Watch the Actions tab on the repo to see when the rebuild is finished.
    
-**To build book**
+**To build book locally**
 
 Do `pip install ghp-import` if needed. Then build book and push to GitHub. Set Pages to use gh-pages branch.
 
@@ -55,3 +55,14 @@ sudo apt-get install texlive-latex-extra \
 jupyter-book build . --builder pdflatex
 ```
 
+**To build book on GitHub**
+
+There is a GitHub Action that will automatically build and serve on GitHub Pages.
+
+If you use this repo as a template and are using gh-pages branch to serve your Pages, then build book locally and push to GitHub. 
+
+```
+ghp-import -n -p -f _build/html
+```
+
+Do `pip install ghp-import` if needed. 
