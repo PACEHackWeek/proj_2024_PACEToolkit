@@ -1,0 +1,3351 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Download Chl-a products of multiple sources and make regional plots &#8212; PACEToolkit</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8714e78c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Multi_sat_compare';</script>
+    <link rel="icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PACE data simple manipulation" href="POC_data_manipulation.html" />
+    <link rel="prev" title="Exploring PACE’s Role in Cyanobacteria Detection" href="PACE_Cyano.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="PACEToolkit - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="PACEToolkit - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    PACEToolkit
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="matchup_tracks.html">Simple track matchup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PACE_Cyano.html">Cyanobacteria bloom detection</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chl-a products of multiple sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="POC_data_manipulation.html">Simple PACE data manipulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualize-in-situ-satellite-aerosol.html">Multi-source aerosol data visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Regrid_PACE_and_other_satellites.html">Re-gridding PACE data</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/PACEHackWeek/proj_2024_PACEToolkit" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/PACEHackWeek/proj_2024_PACEToolkit/edit/main/notebooks/Multi_sat_compare.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/PACEHackWeek/proj_2024_PACEToolkit/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Multi_sat_compare.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/Multi_sat_compare.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Download Chl-a products of multiple sources and make regional plots</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contents">Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-process-pace-oci-data">1. Download and Process PACE OCI Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-process-snpp-viirs-data">2. Download and process SNPP VIIRS data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-process-modis-data">3. Download and process MODIS data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-process-merged-data-oc-cci">4. Download and process merged data (OC CCI)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combine-the-plots-side-by-side">5. Combine the plots side by side</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="download-chl-a-products-of-multiple-sources-and-make-regional-plots">
+<h1>Download Chl-a products of multiple sources and make regional plots<a class="headerlink" href="#download-chl-a-products-of-multiple-sources-and-make-regional-plots" title="Link to this heading">#</a></h1>
+<p><strong>Author:</strong> Jiaxu Zhang<a class="reference external" href="https://orcid.org/0000-0002-8564-3026"><img alt="" src="../_images/orcid.png" /></a> (UW, NOAA, <a class="reference external" href="mailto:jiaxu&#46;zhang&#37;&#52;&#48;noaa&#46;gov">jiaxu<span>&#46;</span>zhang<span>&#64;</span>noaa<span>&#46;</span>gov</a>)</p>
+<p>This tutorial demonstrates how to download chlorophyll-a concentration products from various satellites and create regional plots at publication quality.</p>
+<section id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Download-and-process-PACE-OCI-data"><span class="xref myst">Download and process PACE OCI data</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Download-and-process-SNPP-VIIRS-data"><span class="xref myst">Download and process SNPP VIIRS data</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Download-and-process-MODIS-data"><span class="xref myst">Download and process MODIS data</span></a></p></li>
+<li><p><a class="reference internal" href="#4.-Download-and-process-merged-data-(OC-CCI)"><span class="xref myst">Download and process merged data (OC CCI)</span></a></p></li>
+<li><p><a class="reference internal" href="#5.-Combine-the-plots-side-by-side"><span class="xref myst">Combine the plots side by side</span></a></p></li>
+</ol>
+<p>We begin by importing the packages used in this notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.crs</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ccrs</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">earthaccess</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;../scripts&quot;</span><span class="p">)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">PACEToolkit.regional_plot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">regional_plot</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="download-and-process-pace-oci-data">
+<h2>1. Download and Process PACE OCI Data<a class="headerlink" href="#download-and-process-pace-oci-data" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://pacehackweek.github.io/pace-2024/presentations/hackweek/earthdata_cloud_access.html">This tutorial</a> demonstrates how to use the <code class="docutils literal notranslate"><span class="pre">earthaccess</span></code> package to create PACE OCI Chl-a plots without downloading a local copy. In this tutorial, we will use the <code class="docutils literal notranslate"><span class="pre">hypercoast</span></code> package to achieve the same goal.</p>
+<p>You may need to install <a class="reference external" href="https://github.com/opengeos/HyperCoast">hypercoast</a> in your environment (uncomment the following line).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %pip install &quot;hypercoast[extra]&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">hypercoast</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># hypercoast.nasa_earth_login()</span>
+
+<span class="c1"># Temporal range</span>
+<span class="n">temporal</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;2024-06-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2024-06-15&quot;</span><span class="p">)</span>  
+<span class="c1"># results= hypercoast.search_pace_chla(temporal=temporal, </span>
+<span class="c1">#                                      bbox = bbox)</span>
+<span class="c1"># hypercoast.download_nasa_data(results, &quot;../data/pace_chla&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">files</span> <span class="o">=</span> <span class="s2">&quot;../data/pace_chla/*nc&quot;</span>
+<span class="n">array</span> <span class="o">=</span> <span class="n">hypercoast</span><span class="o">.</span><span class="n">read_pace_chla</span><span class="p">(</span><span class="n">files</span><span class="p">)</span>
+<span class="n">array</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+html[data-theme=dark],
+body[data-theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;chlor_a&#x27; (lat: 1800, lon: 3600, date: 15)&gt; Size: 389MB
+dask.array&lt;transpose, shape=(1800, 3600, 15), dtype=float32, chunksize=(512, 1024, 1), chunktype=numpy.ndarray&gt;
+Coordinates:
+  * lat          (lat) float32 7kB 89.95 89.85 89.75 ... -89.75 -89.85 -89.95
+  * lon          (lon) float32 14kB -179.9 -179.9 -179.8 ... 179.8 179.9 180.0
+  * date         (date) &lt;U10 600B &#x27;2024-06-01&#x27; &#x27;2024-06-02&#x27; ... &#x27;2024-06-15&#x27;
+    spatial_ref  int64 8B 0
+Attributes:
+    long_name:      Chlorophyll Concentration, OCI Algorithm
+    units:          lg(mg m^-3)
+    standard_name:  mass_concentration_of_chlorophyll_in_sea_water
+    valid_min:      0.001
+    valid_max:      100.0
+    reference:      Hu, C., Lee Z., and Franz, B.A. (2012). Chlorophyll-a alg...
+    display_scale:  log
+    display_min:    0.01
+    display_max:    20.0
+    date:           [&#x27;2024-06-01&#x27;, &#x27;2024-06-02&#x27;, &#x27;2024-06-03&#x27;, &#x27;2024-06-04&#x27;, ...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'chlor_a'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>lat</span>: 1800</li><li><span class='xr-has-index'>lon</span>: 3600</li><li><span class='xr-has-index'>date</span>: 15</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-27eccdd7-caf8-42c1-beff-f2e67dcb788f' class='xr-array-in' type='checkbox' checked><label for='section-27eccdd7-caf8-42c1-beff-f2e67dcb788f' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>dask.array&lt;chunksize=(512, 1024, 1), meta=np.ndarray&gt;</span></div><div class='xr-array-data'><table>
+    <tr>
+        <td>
+            <table style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 370.79 MiB </td>
+                        <td> 2.00 MiB </td>
+                    </tr>
+                    
+                    <tr>
+                        <th> Shape </th>
+                        <td> (1800, 3600, 15) </td>
+                        <td> (512, 1024, 1) </td>
+                    </tr>
+                    <tr>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 240 chunks in 48 graph layers </td>
+                    </tr>
+                    <tr>
+                        <th> Data type </th>
+                        <td colspan="2"> float32 numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="120" height="205" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="45" y2="35" style="stroke-width:2" />
+  <line x1="10" y1="34" x2="45" y2="69" />
+  <line x1="10" y1="68" x2="45" y2="103" />
+  <line x1="10" y1="102" x2="45" y2="137" />
+  <line x1="10" y1="120" x2="45" y2="155" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="10" y2="120" style="stroke-width:2" />
+  <line x1="20" y1="10" x2="20" y2="130" />
+  <line x1="30" y1="20" x2="30" y2="140" />
+  <line x1="40" y1="30" x2="40" y2="150" />
+  <line x1="45" y1="35" x2="45" y2="155" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 45.294117647058826,35.294117647058826 45.294117647058826,155.29411764705884 10.0,120.0" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="35" y2="0" style="stroke-width:2" />
+  <line x1="20" y1="10" x2="45" y2="10" />
+  <line x1="30" y1="20" x2="55" y2="20" />
+  <line x1="40" y1="30" x2="65" y2="30" />
+  <line x1="45" y1="35" x2="70" y2="35" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="45" y2="35" style="stroke-width:2" />
+  <line x1="11" y1="0" x2="46" y2="35" />
+  <line x1="13" y1="0" x2="48" y2="35" />
+  <line x1="15" y1="0" x2="50" y2="35" />
+  <line x1="16" y1="0" x2="52" y2="35" />
+  <line x1="18" y1="0" x2="53" y2="35" />
+  <line x1="20" y1="0" x2="55" y2="35" />
+  <line x1="21" y1="0" x2="57" y2="35" />
+  <line x1="23" y1="0" x2="58" y2="35" />
+  <line x1="25" y1="0" x2="60" y2="35" />
+  <line x1="26" y1="0" x2="62" y2="35" />
+  <line x1="28" y1="0" x2="63" y2="35" />
+  <line x1="30" y1="0" x2="65" y2="35" />
+  <line x1="32" y1="0" x2="67" y2="35" />
+  <line x1="33" y1="0" x2="69" y2="35" />
+  <line x1="35" y1="0" x2="70" y2="35" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 35.41261651458248,0.0 70.70673416164131,35.294117647058826 45.294117647058826,35.294117647058826" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="45" y1="35" x2="70" y2="35" style="stroke-width:2" />
+  <line x1="45" y1="69" x2="70" y2="69" />
+  <line x1="45" y1="103" x2="70" y2="103" />
+  <line x1="45" y1="137" x2="70" y2="137" />
+  <line x1="45" y1="155" x2="70" y2="155" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="45" y1="35" x2="45" y2="155" style="stroke-width:2" />
+  <line x1="46" y1="35" x2="46" y2="155" />
+  <line x1="48" y1="35" x2="48" y2="155" />
+  <line x1="50" y1="35" x2="50" y2="155" />
+  <line x1="52" y1="35" x2="52" y2="155" />
+  <line x1="53" y1="35" x2="53" y2="155" />
+  <line x1="55" y1="35" x2="55" y2="155" />
+  <line x1="57" y1="35" x2="57" y2="155" />
+  <line x1="58" y1="35" x2="58" y2="155" />
+  <line x1="60" y1="35" x2="60" y2="155" />
+  <line x1="62" y1="35" x2="62" y2="155" />
+  <line x1="63" y1="35" x2="63" y2="155" />
+  <line x1="65" y1="35" x2="65" y2="155" />
+  <line x1="67" y1="35" x2="67" y2="155" />
+  <line x1="69" y1="35" x2="69" y2="155" />
+  <line x1="70" y1="35" x2="70" y2="155" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="45.294117647058826,35.294117647058826 70.70673416164131,35.294117647058826 70.70673416164131,155.29411764705884 45.294117647058826,155.29411764705884" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="58.000426" y="175.294118" font-size="1.0rem" font-weight="100" text-anchor="middle" >15</text>
+  <text x="90.706734" y="95.294118" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,90.706734,95.294118)">3600</text>
+  <text x="17.647059" y="157.647059" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,17.647059,157.647059)">1800</text>
+</svg>
+        </td>
+    </tr>
+</table></div></div></li><li class='xr-section-item'><input id='section-677df8ec-dcdb-4bfe-a287-8eee20333ee0' class='xr-section-summary-in' type='checkbox'  checked><label for='section-677df8ec-dcdb-4bfe-a287-8eee20333ee0' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>89.95 89.85 89.75 ... -89.85 -89.95</div><input id='attrs-077b9a95-7a64-41b0-9704-e5c723a60462' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-077b9a95-7a64-41b0-9704-e5c723a60462' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4ab73139-7985-4e7d-9768-818e70467726' class='xr-var-data-in' type='checkbox'><label for='data-4ab73139-7985-4e7d-9768-818e70467726' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>valid_min :</span></dt><dd>-90.0</dd><dt><span>valid_max :</span></dt><dd>90.0</dd></dl></div><div class='xr-var-data'><pre>array([ 89.95    ,  89.85    ,  89.75    , ..., -89.75    , -89.850006,
+       -89.950005], dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>-179.9 -179.9 ... 179.9 180.0</div><input id='attrs-f863d3d6-cb4a-47cd-8414-6a54987b7dbc' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f863d3d6-cb4a-47cd-8414-6a54987b7dbc' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ad4f40fd-7f02-4657-b3e3-f5c57f38e85b' class='xr-var-data-in' type='checkbox'><label for='data-ad4f40fd-7f02-4657-b3e3-f5c57f38e85b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>valid_min :</span></dt><dd>-180.0</dd><dt><span>valid_max :</span></dt><dd>180.0</dd></dl></div><div class='xr-var-data'><pre>array([-179.95   , -179.85   , -179.75   , ...,  179.75   ,  179.85   ,
+        179.95001], dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>date</span></div><div class='xr-var-dims'>(date)</div><div class='xr-var-dtype'>&lt;U10</div><div class='xr-var-preview xr-preview'>&#x27;2024-06-01&#x27; ... &#x27;2024-06-15&#x27;</div><input id='attrs-df91f71f-06ab-42e0-9290-48c2feb444e4' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-df91f71f-06ab-42e0-9290-48c2feb444e4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-79408b0a-7490-4689-94c7-c2c6c0e1fcca' class='xr-var-data-in' type='checkbox'><label for='data-79408b0a-7490-4689-94c7-c2c6c0e1fcca' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;2024-06-01&#x27;, &#x27;2024-06-02&#x27;, &#x27;2024-06-03&#x27;, &#x27;2024-06-04&#x27;, &#x27;2024-06-05&#x27;,
+       &#x27;2024-06-06&#x27;, &#x27;2024-06-07&#x27;, &#x27;2024-06-08&#x27;, &#x27;2024-06-09&#x27;, &#x27;2024-06-10&#x27;,
+       &#x27;2024-06-11&#x27;, &#x27;2024-06-12&#x27;, &#x27;2024-06-13&#x27;, &#x27;2024-06-14&#x27;, &#x27;2024-06-15&#x27;],
+      dtype=&#x27;&lt;U10&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>spatial_ref</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0</div><input id='attrs-fb9bb427-939e-4124-814f-b391609a0af4' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fb9bb427-939e-4124-814f-b391609a0af4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e172c540-94dc-4a97-8449-6caf1d37960a' class='xr-var-data-in' type='checkbox'><label for='data-e172c540-94dc-4a97-8449-6caf1d37960a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>crs_wkt :</span></dt><dd>GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AXIS[&quot;Latitude&quot;,NORTH],AXIS[&quot;Longitude&quot;,EAST],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>semi_minor_axis :</span></dt><dd>6356752.314245179</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>reference_ellipsoid_name :</span></dt><dd>WGS 84</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>prime_meridian_name :</span></dt><dd>Greenwich</dd><dt><span>geographic_crs_name :</span></dt><dd>WGS 84</dd><dt><span>horizontal_datum_name :</span></dt><dd>World Geodetic System 1984</dd><dt><span>grid_mapping_name :</span></dt><dd>latitude_longitude</dd><dt><span>spatial_ref :</span></dt><dd>GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AXIS[&quot;Latitude&quot;,NORTH],AXIS[&quot;Longitude&quot;,EAST],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</dd></dl></div><div class='xr-var-data'><pre>array(0)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-cad0db4c-9954-44b3-aa48-e69644952136' class='xr-section-summary-in' type='checkbox'  ><label for='section-cad0db4c-9954-44b3-aa48-e69644952136' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>lat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-170ae46f-c73f-4276-86d9-e47a4785f3a7' class='xr-index-data-in' type='checkbox'/><label for='index-170ae46f-c73f-4276-86d9-e47a4785f3a7' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([ 89.94999694824219,   89.8499984741211,              89.75,
+         89.6500015258789,  89.55000305175781,  89.44999694824219,
+         89.3499984741211,              89.25,   89.1500015258789,
+        89.05000305175781,
+       ...
+       -89.05000305175781,  -89.1500015258789,             -89.25,
+       -89.35000610351562, -89.45000457763672, -89.55000305175781,
+        -89.6500015258789,             -89.75, -89.85000610351562,
+       -89.95000457763672],
+      dtype=&#x27;float32&#x27;, name=&#x27;lat&#x27;, length=1800))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-d4db5910-cba0-4c17-8685-9778d62618b8' class='xr-index-data-in' type='checkbox'/><label for='index-d4db5910-cba0-4c17-8685-9778d62618b8' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([ -179.9499969482422, -179.85000610351562,             -179.75,
+       -179.64999389648438,  -179.5500030517578,  -179.4499969482422,
+       -179.35000610351562,             -179.25, -179.14999389648438,
+        -179.0500030517578,
+       ...
+         179.0500030517578,  179.15000915527344,              179.25,
+        179.35000610351562,  179.45001220703125,   179.5500030517578,
+        179.65000915527344,              179.75,  179.85000610351562,
+        179.95001220703125],
+      dtype=&#x27;float32&#x27;, name=&#x27;lon&#x27;, length=3600))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>date</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-84638688-0853-45d6-a594-9a061619a1c5' class='xr-index-data-in' type='checkbox'/><label for='index-84638688-0853-45d6-a594-9a061619a1c5' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([&#x27;2024-06-01&#x27;, &#x27;2024-06-02&#x27;, &#x27;2024-06-03&#x27;, &#x27;2024-06-04&#x27;, &#x27;2024-06-05&#x27;,
+       &#x27;2024-06-06&#x27;, &#x27;2024-06-07&#x27;, &#x27;2024-06-08&#x27;, &#x27;2024-06-09&#x27;, &#x27;2024-06-10&#x27;,
+       &#x27;2024-06-11&#x27;, &#x27;2024-06-12&#x27;, &#x27;2024-06-13&#x27;, &#x27;2024-06-14&#x27;, &#x27;2024-06-15&#x27;],
+      dtype=&#x27;object&#x27;, name=&#x27;date&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-ca8e2aa3-01c6-45a6-ae45-e3c951d9cc76' class='xr-section-summary-in' type='checkbox'  ><label for='section-ca8e2aa3-01c6-45a6-ae45-e3c951d9cc76' class='xr-section-summary' >Attributes: <span>(10)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Chlorophyll Concentration, OCI Algorithm</dd><dt><span>units :</span></dt><dd>lg(mg m^-3)</dd><dt><span>standard_name :</span></dt><dd>mass_concentration_of_chlorophyll_in_sea_water</dd><dt><span>valid_min :</span></dt><dd>0.001</dd><dt><span>valid_max :</span></dt><dd>100.0</dd><dt><span>reference :</span></dt><dd>Hu, C., Lee Z., and Franz, B.A. (2012). Chlorophyll-a algorithms for oligotrophic oceans: A novel approach based on three-band reflectance difference, J. Geophys. Res., 117, C01011, doi:10.1029/2011JC007395.</dd><dt><span>display_scale :</span></dt><dd>log</dd><dt><span>display_min :</span></dt><dd>0.01</dd><dt><span>display_max :</span></dt><dd>20.0</dd><dt><span>date :</span></dt><dd>[&#x27;2024-06-01&#x27;, &#x27;2024-06-02&#x27;, &#x27;2024-06-03&#x27;, &#x27;2024-06-04&#x27;, &#x27;2024-06-05&#x27;, &#x27;2024-06-06&#x27;, &#x27;2024-06-07&#x27;, &#x27;2024-06-08&#x27;, &#x27;2024-06-09&#x27;, &#x27;2024-06-10&#x27;, &#x27;2024-06-11&#x27;, &#x27;2024-06-12&#x27;, &#x27;2024-06-13&#x27;, &#x27;2024-06-14&#x27;, &#x27;2024-06-15&#x27;]</dd></dl></div></li></ul></div></div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">hypercoast</span></code> has a plot function <code class="docutils literal notranslate"><span class="pre">viz_pace_chla</span></code> to easily take a quick view of the mean value of the period.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hypercoast</span><span class="o">.</span><span class="n">viz_pace_chla</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x7f55d66cca90&gt;
+</pre></div>
+</div>
+<img alt="../_images/8699623807d79e57aa34722bddb0d2b3e309c7260845929bc14e1d95392e2e5e.png" src="../_images/8699623807d79e57aa34722bddb0d2b3e309c7260845929bc14e1d95392e2e5e.png" />
+</div>
+</div>
+<p>Custermize the dataset and subset it for plotting. First we calculate the mean of the 15-day data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">array_mean</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span>
+<span class="n">array_mean</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;long_name&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;PACE </span><span class="si">{</span><span class="n">array</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;long_name&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+        <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;lg(</span><span class="si">{</span><span class="n">array</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;units&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Define the boundary of the area and perform the reduction. Note that the latitude values descend in the index, so the slice will flip the values <code class="docutils literal notranslate"><span class="pre">lat_bnds</span> <span class="pre">=</span> <span class="pre">[max_lat,</span> <span class="pre">min_lat]</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">min_lon</span> <span class="o">=</span> <span class="o">-</span><span class="mi">179</span>     <span class="c1"># lower left longitude</span>
+<span class="n">min_lat</span> <span class="o">=</span> <span class="mi">50</span>       <span class="c1"># lower left latitude</span>
+<span class="n">max_lon</span> <span class="o">=</span> <span class="o">-</span><span class="mi">140</span>     <span class="c1"># upper right longitude</span>
+<span class="n">max_lat</span> <span class="o">=</span> <span class="mi">72</span>       <span class="c1"># upper right latitude</span>
+
+<span class="n">lon_bnds</span> <span class="o">=</span> <span class="p">[</span><span class="n">min_lon</span><span class="p">,</span> <span class="n">max_lon</span><span class="p">]</span>
+<span class="n">lat_bnds</span> <span class="o">=</span> <span class="p">[</span><span class="n">max_lat</span><span class="p">,</span> <span class="n">min_lat</span><span class="p">]</span>
+<span class="n">array_mean_clip</span> <span class="o">=</span> <span class="n">array_mean</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="o">*</span><span class="n">lat_bnds</span><span class="p">),</span> <span class="n">lon</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="o">*</span><span class="n">lon_bnds</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">array_mean_clip</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+html[data-theme=dark],
+body[data-theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;chlor_a&#x27; (lat: 220, lon: 390)&gt; Size: 343kB
+dask.array&lt;getitem, shape=(220, 390), dtype=float32, chunksize=(220, 390), chunktype=numpy.ndarray&gt;
+Coordinates:
+  * lat          (lat) float32 880B 71.95 71.85 71.75 ... 50.25 50.15 50.05
+  * lon          (lon) float32 2kB -178.9 -178.9 -178.8 ... -140.2 -140.1 -140.1
+    spatial_ref  int64 8B 0
+Attributes:
+    long_name:  PACE Chlorophyll Concentration, OCI Algorithm
+    units:      lg(lg(mg m^-3))</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'chlor_a'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>lat</span>: 220</li><li><span class='xr-has-index'>lon</span>: 390</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-21657c1c-38e7-48f2-93d3-eebad6241576' class='xr-array-in' type='checkbox' checked><label for='section-21657c1c-38e7-48f2-93d3-eebad6241576' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>dask.array&lt;chunksize=(220, 390), meta=np.ndarray&gt;</span></div><div class='xr-array-data'><table>
+    <tr>
+        <td>
+            <table style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 335.16 kiB </td>
+                        <td> 335.16 kiB </td>
+                    </tr>
+                    
+                    <tr>
+                        <th> Shape </th>
+                        <td> (220, 390) </td>
+                        <td> (220, 390) </td>
+                    </tr>
+                    <tr>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 1 chunks in 52 graph layers </td>
+                    </tr>
+                    <tr>
+                        <th> Data type </th>
+                        <td colspan="2"> float32 numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="117" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="67" x2="120" y2="67" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="67" style="stroke-width:2" />
+  <line x1="120" y1="0" x2="120" y2="67" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,67.6923076923077 0.0,67.6923076923077" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="87.692308" font-size="1.0rem" font-weight="100" text-anchor="middle" >390</text>
+  <text x="140.000000" y="33.846154" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,140.000000,33.846154)">220</text>
+</svg>
+        </td>
+    </tr>
+</table></div></div></li><li class='xr-section-item'><input id='section-d1d20ac5-f41e-4a86-9c4a-4fb19d5c2854' class='xr-section-summary-in' type='checkbox'  checked><label for='section-d1d20ac5-f41e-4a86-9c4a-4fb19d5c2854' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>71.95 71.85 71.75 ... 50.15 50.05</div><input id='attrs-40ddeb24-b257-4430-9f6d-d522aec21e7d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-40ddeb24-b257-4430-9f6d-d522aec21e7d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4948d878-63fb-4cca-90af-454c88e184d8' class='xr-var-data-in' type='checkbox'><label for='data-4948d878-63fb-4cca-90af-454c88e184d8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>valid_min :</span></dt><dd>-90.0</dd><dt><span>valid_max :</span></dt><dd>90.0</dd></dl></div><div class='xr-var-data'><pre>array([71.95    , 71.85    , 71.75    , ..., 50.25    , 50.149998, 50.05    ],
+      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>-178.9 -178.9 ... -140.1 -140.1</div><input id='attrs-36472b40-9cd9-4d45-b33d-3b9d505f3593' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-36472b40-9cd9-4d45-b33d-3b9d505f3593' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0ed244ce-6340-4436-a4e8-747c4d1d8678' class='xr-var-data-in' type='checkbox'><label for='data-0ed244ce-6340-4436-a4e8-747c4d1d8678' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>valid_min :</span></dt><dd>-180.0</dd><dt><span>valid_max :</span></dt><dd>180.0</dd></dl></div><div class='xr-var-data'><pre>array([-178.95, -178.85, -178.75, ..., -140.25, -140.15, -140.05],
+      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>spatial_ref</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0</div><input id='attrs-14c446a9-c2d2-414b-9531-9b343a8fbf6e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-14c446a9-c2d2-414b-9531-9b343a8fbf6e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-120d77c1-5cf2-4312-9440-775cc65f6ae7' class='xr-var-data-in' type='checkbox'><label for='data-120d77c1-5cf2-4312-9440-775cc65f6ae7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>crs_wkt :</span></dt><dd>GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AXIS[&quot;Latitude&quot;,NORTH],AXIS[&quot;Longitude&quot;,EAST],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>semi_minor_axis :</span></dt><dd>6356752.314245179</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>reference_ellipsoid_name :</span></dt><dd>WGS 84</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>prime_meridian_name :</span></dt><dd>Greenwich</dd><dt><span>geographic_crs_name :</span></dt><dd>WGS 84</dd><dt><span>horizontal_datum_name :</span></dt><dd>World Geodetic System 1984</dd><dt><span>grid_mapping_name :</span></dt><dd>latitude_longitude</dd><dt><span>spatial_ref :</span></dt><dd>GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AXIS[&quot;Latitude&quot;,NORTH],AXIS[&quot;Longitude&quot;,EAST],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</dd></dl></div><div class='xr-var-data'><pre>array(0)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-af33edaa-1f93-47bb-b5b1-9f933206c9f2' class='xr-section-summary-in' type='checkbox'  ><label for='section-af33edaa-1f93-47bb-b5b1-9f933206c9f2' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>lat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-cfd98c09-5ca6-4ec2-abed-01e0f63bbd46' class='xr-index-data-in' type='checkbox'/><label for='index-cfd98c09-5ca6-4ec2-abed-01e0f63bbd46' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([ 71.94999694824219,   71.8499984741211,              71.75,
+         71.6500015258789,  71.55000305175781,  71.44999694824219,
+         71.3499984741211,              71.25,   71.1500015258789,
+        71.05000305175781,
+       ...
+        50.95000076293945, 50.849998474121094,              50.75,
+        50.64999771118164,  50.54999923706055,  50.45000076293945,
+       50.349998474121094,              50.25,  50.14999771118164,
+        50.04999923706055],
+      dtype=&#x27;float32&#x27;, name=&#x27;lat&#x27;, length=220))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-471c03d4-9a03-4baa-9e65-b4fac62fb9f2' class='xr-index-data-in' type='checkbox'/><label for='index-471c03d4-9a03-4baa-9e65-b4fac62fb9f2' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([ -178.9499969482422, -178.85000610351562,             -178.75,
+       -178.64999389648438,  -178.5500030517578,  -178.4499969482422,
+       -178.35000610351562,             -178.25, -178.14999389648438,
+        -178.0500030517578,
+       ...
+        -140.9499969482422, -140.85000610351562,             -140.75,
+       -140.64999389648438,  -140.5500030517578,  -140.4499969482422,
+       -140.35000610351562,             -140.25, -140.14999389648438,
+        -140.0500030517578],
+      dtype=&#x27;float32&#x27;, name=&#x27;lon&#x27;, length=390))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-43c94eef-eef0-4077-ad47-e1c594b0f762' class='xr-section-summary-in' type='checkbox'  checked><label for='section-43c94eef-eef0-4077-ad47-e1c594b0f762' class='xr-section-summary' >Attributes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>PACE Chlorophyll Concentration, OCI Algorithm</dd><dt><span>units :</span></dt><dd>lg(lg(mg m^-3))</dd></dl></div></li></ul></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot PACE data</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">regional_plot</span><span class="o">.</span><span class="n">plot_regional_map</span><span class="p">(</span><span class="n">array_mean_clip</span><span class="p">,</span> <span class="n">min_lon</span><span class="p">,</span> <span class="n">max_lon</span><span class="p">,</span> <span class="n">min_lat</span><span class="p">,</span> <span class="n">max_lat</span><span class="p">,</span> 
+                 <span class="n">title</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> to </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">temporal</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">temporal</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> 
+                 <span class="n">vmin</span><span class="o">=-</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3b562482ff11b401708c375425dc4471408f60e9f0c602f7523ab42d41312878.png" src="../_images/3b562482ff11b401708c375425dc4471408f60e9f0c602f7523ab42d41312878.png" />
+</div>
+</div>
+<p><a class="reference internal" href="#Contents"><span class="xref myst">back to top</span></a></p>
+</section>
+<section id="download-and-process-snpp-viirs-data">
+<h2>2. Download and process SNPP VIIRS data<a class="headerlink" href="#download-and-process-snpp-viirs-data" title="Link to this heading">#</a></h2>
+<p>There are many different ways to obtain L3 data (e.g., from <a class="reference external" href="https://oceancolor.gsfc.nasa.gov/l3/">https://oceancolor.gsfc.nasa.gov/l3/</a>) <br />
+Here we show how to get data from NOAA’s ERDDAP server (<a class="reference external" href="https://oceanwatch.pifsc.noaa.gov/erddap/index.html">https://oceanwatch.pifsc.noaa.gov/erddap/index.html</a>). ERDDAP is both a data server and a web application developed by NOAA’s Environmental Research Division. It provides a user-friendly web interface for searching, accessing, and visualizing data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Uncomment the following lines if you need to download the data for the first time</span>
+
+<span class="c1"># import urllib.request </span>
+<span class="c1"># url = &#39;https://oceanwatch.pifsc.noaa.gov/erddap/griddap/noaa_snpp_chla_daily.nc?chlor_a%5B(2024-06-01T12:00:00Z):1:(2024-06-15T12:00:00Z)%5D%5B(0.0):1:(0.0)%5D%5B(77.00625):1:(50.006249999999994)%5D%5B(180.01875):1:(221.98125000000002)%5D&#39;</span>
+<span class="c1"># urllib.request.urlretrieve(url, &quot;../data/viirs.nc&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">viirs_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;../data/viirs.nc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since the dataset is already subsetted for the area of interest, the next step is to compute the 15-day mean and create plots.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">viirs_chla</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">viirs_ds</span><span class="p">[</span><span class="s1">&#39;chlor_a&#39;</span><span class="p">])</span>
+<span class="c1"># Calculate the temporal mean</span>
+<span class="n">viirs_chla_mean</span> <span class="o">=</span> <span class="n">viirs_chla</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+
+<span class="n">viirs_chla_mean</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;long_name&quot;</span><span class="p">:</span> <span class="s2">&quot;SNPP VIIRS, L3 Chlorophyll a Concentration&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s1">&#39;lg[lg[</span><span class="si">{}</span><span class="s1">]]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">viirs_ds</span><span class="p">[</span><span class="s1">&#39;chlor_a&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;units&quot;</span><span class="p">]),</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot VIIRS data</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">regional_plot</span><span class="o">.</span><span class="n">plot_regional_map</span><span class="p">(</span><span class="n">viirs_chla_mean</span><span class="p">,</span> <span class="n">min_lon</span><span class="p">,</span> <span class="n">max_lon</span><span class="p">,</span> <span class="n">min_lat</span><span class="p">,</span> <span class="n">max_lat</span><span class="p">,</span> 
+                 <span class="n">title</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> to </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">temporal</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">temporal</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> 
+                 <span class="n">vmin</span><span class="o">=-</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f90c565d7ac7cc169c5337b4dd35b83bb5ea084a93cb11b767c33fbdf579ad23.png" src="../_images/f90c565d7ac7cc169c5337b4dd35b83bb5ea084a93cb11b767c33fbdf579ad23.png" />
+</div>
+</div>
+<p><a class="reference internal" href="#Contents"><span class="xref myst">back to top</span></a></p>
+</section>
+<section id="download-and-process-modis-data">
+<h2>3. Download and process MODIS data<a class="headerlink" href="#download-and-process-modis-data" title="Link to this heading">#</a></h2>
+<p>You may visit <a class="reference external" href="https://search.earthdata.nasa.gov/">NASA Earthdata Search</a> and enter the short names to read about each data collection. We want to use the <code class="docutils literal notranslate"><span class="pre">MODISA_L3m_CHL</span></code> data collection for our plot. You can retrieve the files (granules) in that collection using <code class="docutils literal notranslate"><span class="pre">earthaccess.search_data()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tspan</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;2023-06-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2023-06-15&quot;</span><span class="p">)</span>
+
+<span class="c1"># auth = earthaccess.login(persist=True)</span>
+
+<span class="c1"># results = earthaccess.search_data(</span>
+<span class="c1">#     short_name=&quot;MODISA_L3m_CHL&quot;,</span>
+<span class="c1">#     granule_name=&quot;*.8D*.9km*&quot;,</span>
+<span class="c1">#     temporal=tspan,</span>
+<span class="c1"># )</span>
+
+<span class="c1"># results[0]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>By checking the first data, it indicates that the file is not cloud-hosted. We will need to download the data file with <code class="docutils literal notranslate"><span class="pre">earthaccess.download()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># paths = earthaccess.download(results, &quot;../data/modis_chla&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">paths</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;../data/modis_chla/AQUA_MODIS.20230525_20230601.L3m.8D.CHL.chlor_a.9km.nc&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;../data/modis_chla/AQUA_MODIS.20230602_20230609.L3m.8D.CHL.chlor_a.9km.nc&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;../data/modis_chla/AQUA_MODIS.20230610_20230617.L3m.8D.CHL.chlor_a.9km.nc&#39;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modis_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span>
+    <span class="n">paths</span><span class="p">,</span>
+    <span class="n">combine</span><span class="o">=</span><span class="s2">&quot;nested&quot;</span><span class="p">,</span>
+    <span class="n">concat_dim</span><span class="o">=</span><span class="s2">&quot;date&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">modis_ds</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+html[data-theme=dark],
+body[data-theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 112MB
+Dimensions:  (date: 3, lat: 2160, lon: 4320, rgb: 3, eightbitcolor: 256)
+Coordinates:
+  * lat      (lat) float32 9kB 89.96 89.88 89.79 89.71 ... -89.79 -89.88 -89.96
+  * lon      (lon) float32 17kB -180.0 -179.9 -179.8 ... 179.8 179.9 180.0
+Dimensions without coordinates: date, rgb, eightbitcolor
+Data variables:
+    chlor_a  (date, lat, lon) float32 112MB dask.array&lt;chunksize=(1, 512, 1024), meta=np.ndarray&gt;
+    palette  (date, rgb, eightbitcolor) uint8 2kB dask.array&lt;chunksize=(1, 3, 256), meta=np.ndarray&gt;
+Attributes: (12/64)
+    product_name:                      AQUA_MODIS.20230525_20230601.L3m.8D.CH...
+    instrument:                        MODIS
+    title:                             MODISA Level-3 Standard Mapped Image
+    project:                           Ocean Biology Processing Group (NASA/G...
+    platform:                          Aqua
+    source:                            satellite observations from MODIS-Aqua
+    ...                                ...
+    identifier_product_doi:            10.5067/AQUA/MODIS/L3M/CHL/2022
+    keywords:                          Earth Science &gt; Oceans &gt; Ocean Chemist...
+    keywords_vocabulary:               NASA Global Change Master Directory (G...
+    data_bins:                         3087431
+    data_minimum:                      0.0031313652
+    data_maximum:                      86.3219</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-71f1eb3f-26a2-4d3e-bc37-7f68daf6dd23' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-71f1eb3f-26a2-4d3e-bc37-7f68daf6dd23' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span>date</span>: 3</li><li><span class='xr-has-index'>lat</span>: 2160</li><li><span class='xr-has-index'>lon</span>: 4320</li><li><span>rgb</span>: 3</li><li><span>eightbitcolor</span>: 256</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-36063c43-0211-4e11-9472-d607f71053ec' class='xr-section-summary-in' type='checkbox'  checked><label for='section-36063c43-0211-4e11-9472-d607f71053ec' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>89.96 89.88 89.79 ... -89.88 -89.96</div><input id='attrs-f792c8a8-9e38-4313-8193-b9cc0dbc642c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f792c8a8-9e38-4313-8193-b9cc0dbc642c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-45c7c1a0-5d41-4bac-a7a7-2c5867b3a03f' class='xr-var-data-in' type='checkbox'><label for='data-45c7c1a0-5d41-4bac-a7a7-2c5867b3a03f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>valid_min :</span></dt><dd>-90.0</dd><dt><span>valid_max :</span></dt><dd>90.0</dd></dl></div><div class='xr-var-data'><pre>array([ 89.958336,  89.875   ,  89.791664, ..., -89.79167 , -89.87501 ,
+       -89.958336], dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>-180.0 -179.9 ... 179.9 180.0</div><input id='attrs-91bb38ad-34a2-4622-8edd-4359c605ed41' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-91bb38ad-34a2-4622-8edd-4359c605ed41' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c6eeee59-50c3-4952-aa9c-0f9f93db11e3' class='xr-var-data-in' type='checkbox'><label for='data-c6eeee59-50c3-4952-aa9c-0f9f93db11e3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>valid_min :</span></dt><dd>-180.0</dd><dt><span>valid_max :</span></dt><dd>180.0</dd></dl></div><div class='xr-var-data'><pre>array([-179.95833, -179.875  , -179.79167, ...,  179.79167,  179.87502,
+        179.95834], dtype=float32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-5f6b7a3a-39e4-4c87-8017-8bf721a2fb2d' class='xr-section-summary-in' type='checkbox'  checked><label for='section-5f6b7a3a-39e4-4c87-8017-8bf721a2fb2d' class='xr-section-summary' >Data variables: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>chlor_a</span></div><div class='xr-var-dims'>(date, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 512, 1024), meta=np.ndarray&gt;</div><input id='attrs-c12ff0a7-8762-4a2e-baec-40fb6a1ecedd' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c12ff0a7-8762-4a2e-baec-40fb6a1ecedd' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ef75480c-7044-47a3-a63e-19417701cbcc' class='xr-var-data-in' type='checkbox'><label for='data-ef75480c-7044-47a3-a63e-19417701cbcc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Chlorophyll Concentration, OCI Algorithm</dd><dt><span>units :</span></dt><dd>mg m^-3</dd><dt><span>standard_name :</span></dt><dd>mass_concentration_of_chlorophyll_in_sea_water</dd><dt><span>valid_min :</span></dt><dd>0.001</dd><dt><span>valid_max :</span></dt><dd>100.0</dd><dt><span>reference :</span></dt><dd>Hu, C., Lee Z., and Franz, B.A. (2012). Chlorophyll-a algorithms for oligotrophic oceans: A novel approach based on three-band reflectance difference, J. Geophys. Res., 117, C01011, doi:10.1029/2011JC007395.</dd><dt><span>display_scale :</span></dt><dd>log</dd><dt><span>display_min :</span></dt><dd>0.01</dd><dt><span>display_max :</span></dt><dd>20.0</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 106.79 MiB </td>
+                        <td> 2.00 MiB </td>
+                    </tr>
+                    
+                    <tr>
+                        <th> Shape </th>
+                        <td> (3, 2160, 4320) </td>
+                        <td> (1, 512, 1024) </td>
+                    </tr>
+                    <tr>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 75 chunks in 10 graph layers </td>
+                    </tr>
+                    <tr>
+                        <th> Data type </th>
+                        <td colspan="2"> float32 numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="194" height="124" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="24" y2="14" style="stroke-width:2" />
+  <line x1="10" y1="14" x2="24" y2="29" />
+  <line x1="10" y1="28" x2="24" y2="43" />
+  <line x1="10" y1="42" x2="24" y2="57" />
+  <line x1="10" y1="56" x2="24" y2="71" />
+  <line x1="10" y1="60" x2="24" y2="74" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="10" y2="60" style="stroke-width:2" />
+  <line x1="14" y1="4" x2="14" y2="64" />
+  <line x1="19" y1="9" x2="19" y2="69" />
+  <line x1="24" y1="14" x2="24" y2="74" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 24.9485979497544,14.948597949754403 24.9485979497544,74.9485979497544 10.0,60.0" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="130" y2="0" style="stroke-width:2" />
+  <line x1="14" y1="4" x2="134" y2="4" />
+  <line x1="19" y1="9" x2="139" y2="9" />
+  <line x1="24" y1="14" x2="144" y2="14" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="24" y2="14" style="stroke-width:2" />
+  <line x1="38" y1="0" x2="53" y2="14" />
+  <line x1="66" y1="0" x2="81" y2="14" />
+  <line x1="95" y1="0" x2="110" y2="14" />
+  <line x1="123" y1="0" x2="138" y2="14" />
+  <line x1="130" y1="0" x2="144" y2="14" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 130.0,0.0 144.9485979497544,14.948597949754403 24.9485979497544,14.948597949754403" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="24" y1="14" x2="144" y2="14" style="stroke-width:2" />
+  <line x1="24" y1="29" x2="144" y2="29" />
+  <line x1="24" y1="43" x2="144" y2="43" />
+  <line x1="24" y1="57" x2="144" y2="57" />
+  <line x1="24" y1="71" x2="144" y2="71" />
+  <line x1="24" y1="74" x2="144" y2="74" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="24" y1="14" x2="24" y2="74" style="stroke-width:2" />
+  <line x1="53" y1="14" x2="53" y2="74" />
+  <line x1="81" y1="14" x2="81" y2="74" />
+  <line x1="110" y1="14" x2="110" y2="74" />
+  <line x1="138" y1="14" x2="138" y2="74" />
+  <line x1="144" y1="14" x2="144" y2="74" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="24.9485979497544,14.948597949754403 144.9485979497544,14.948597949754403 144.9485979497544,74.9485979497544 24.9485979497544,74.9485979497544" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="84.948598" y="94.948598" font-size="1.0rem" font-weight="100" text-anchor="middle" >4320</text>
+  <text x="164.948598" y="44.948598" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,164.948598,44.948598)">2160</text>
+  <text x="7.474299" y="87.474299" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,7.474299,87.474299)">3</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>palette</span></div><div class='xr-var-dims'>(date, rgb, eightbitcolor)</div><div class='xr-var-dtype'>uint8</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 3, 256), meta=np.ndarray&gt;</div><input id='attrs-00b20a6c-faf3-48bf-8046-cea207ce787c' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-00b20a6c-faf3-48bf-8046-cea207ce787c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-967900d7-41ff-4ede-a028-a80897981df8' class='xr-var-data-in' type='checkbox'><label for='data-967900d7-41ff-4ede-a028-a80897981df8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 2.25 kiB </td>
+                        <td> 768 B </td>
+                    </tr>
+                    
+                    <tr>
+                        <th> Shape </th>
+                        <td> (3, 3, 256) </td>
+                        <td> (1, 3, 256) </td>
+                    </tr>
+                    <tr>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 3 chunks in 10 graph layers </td>
+                    </tr>
+                    <tr>
+                        <th> Data type </th>
+                        <td colspan="2"> uint8 numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="195" height="91" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="25" y2="15" style="stroke-width:2" />
+  <line x1="10" y1="26" x2="25" y2="41" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="10" y2="26" style="stroke-width:2" />
+  <line x1="15" y1="5" x2="15" y2="31" />
+  <line x1="20" y1="10" x2="20" y2="36" />
+  <line x1="25" y1="15" x2="25" y2="41" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 25.404735236198295,15.404735236198295 25.404735236198295,41.5927851377354 10.0,26.188049901537102" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="130" y2="0" style="stroke-width:2" />
+  <line x1="15" y1="5" x2="135" y2="5" />
+  <line x1="20" y1="10" x2="140" y2="10" />
+  <line x1="25" y1="15" x2="145" y2="15" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="25" y2="15" style="stroke-width:2" />
+  <line x1="130" y1="0" x2="145" y2="15" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 130.0,0.0 145.4047352361983,15.404735236198295 25.404735236198295,15.404735236198295" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="25" y1="15" x2="145" y2="15" style="stroke-width:2" />
+  <line x1="25" y1="41" x2="145" y2="41" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="25" y1="15" x2="25" y2="41" style="stroke-width:2" />
+  <line x1="145" y1="15" x2="145" y2="41" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="25.404735236198295,15.404735236198295 145.4047352361983,15.404735236198295 145.4047352361983,41.5927851377354 25.404735236198295,41.5927851377354" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="85.404735" y="61.592785" font-size="1.0rem" font-weight="100" text-anchor="middle" >256</text>
+  <text x="165.404735" y="28.498760" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,165.404735,28.498760)">3</text>
+  <text x="7.702368" y="53.890418" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,7.702368,53.890418)">3</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-b12c2d96-7559-49f6-ac3c-5fdfb9c092a7' class='xr-section-summary-in' type='checkbox'  ><label for='section-b12c2d96-7559-49f6-ac3c-5fdfb9c092a7' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>lat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-504cd34f-75af-499c-a84b-ad775ed1664e' class='xr-index-data-in' type='checkbox'/><label for='index-504cd34f-75af-499c-a84b-ad775ed1664e' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([ 89.95833587646484,             89.875,  89.79166412353516,
+        89.70833587646484,             89.625,  89.54166412353516,
+        89.45833587646484,             89.375,  89.29166412353516,
+        89.20833587646484,
+       ...
+       -89.20833587646484, -89.29167175292969, -89.37500762939453,
+       -89.45833587646484, -89.54167175292969, -89.62500762939453,
+       -89.70833587646484, -89.79167175292969, -89.87500762939453,
+       -89.95833587646484],
+      dtype=&#x27;float32&#x27;, name=&#x27;lat&#x27;, length=2160))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-d5c8e830-5381-40ce-b448-6e783f8233d9' class='xr-index-data-in' type='checkbox'/><label for='index-d5c8e830-5381-40ce-b448-6e783f8233d9' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-179.9583282470703,           -179.875, -179.7916717529297,
+       -179.7083282470703,           -179.625, -179.5416717529297,
+       -179.4583282470703,           -179.375, -179.2916717529297,
+       -179.2083282470703,
+       ...
+       179.20834350585938,  179.2916717529297, 179.37501525878906,
+       179.45834350585938,  179.5416717529297, 179.62501525878906,
+       179.70834350585938,  179.7916717529297, 179.87501525878906,
+       179.95834350585938],
+      dtype=&#x27;float32&#x27;, name=&#x27;lon&#x27;, length=4320))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-ca70e789-a38d-4158-ac36-5174da30a502' class='xr-section-summary-in' type='checkbox'  ><label for='section-ca70e789-a38d-4158-ac36-5174da30a502' class='xr-section-summary' >Attributes: <span>(64)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>product_name :</span></dt><dd>AQUA_MODIS.20230525_20230601.L3m.8D.CHL.chlor_a.9km.nc</dd><dt><span>instrument :</span></dt><dd>MODIS</dd><dt><span>title :</span></dt><dd>MODISA Level-3 Standard Mapped Image</dd><dt><span>project :</span></dt><dd>Ocean Biology Processing Group (NASA/GSFC/OBPG)</dd><dt><span>platform :</span></dt><dd>Aqua</dd><dt><span>source :</span></dt><dd>satellite observations from MODIS-Aqua</dd><dt><span>temporal_range :</span></dt><dd>8-day</dd><dt><span>processing_version :</span></dt><dd>R2022.0.1</dd><dt><span>date_created :</span></dt><dd>2024-07-16T03:30:21.000Z</dd><dt><span>history :</span></dt><dd>l3mapgen par=AQUA_MODIS.20230525_20230601.L3m.8D.CHL.chlor_a.9km.nc.param </dd><dt><span>l2_flag_names :</span></dt><dd>ATMFAIL,LAND,HILT,HISATZEN,STRAYLIGHT,CLDICE,COCCOLITH,LOWLW,CHLWARN,CHLFAIL,NAVWARN,MAXAERITER,ATMWARN,HISOLZEN,NAVFAIL,FILTER,HIGLINT</dd><dt><span>time_coverage_start :</span></dt><dd>2023-05-25T00:15:01.000Z</dd><dt><span>time_coverage_end :</span></dt><dd>2023-06-02T02:50:00.000Z</dd><dt><span>start_orbit_number :</span></dt><dd>111999</dd><dt><span>end_orbit_number :</span></dt><dd>112117</dd><dt><span>map_projection :</span></dt><dd>Equidistant Cylindrical</dd><dt><span>latitude_units :</span></dt><dd>degrees_north</dd><dt><span>longitude_units :</span></dt><dd>degrees_east</dd><dt><span>northernmost_latitude :</span></dt><dd>90.0</dd><dt><span>southernmost_latitude :</span></dt><dd>-90.0</dd><dt><span>westernmost_longitude :</span></dt><dd>-180.0</dd><dt><span>easternmost_longitude :</span></dt><dd>180.0</dd><dt><span>geospatial_lat_max :</span></dt><dd>90.0</dd><dt><span>geospatial_lat_min :</span></dt><dd>-90.0</dd><dt><span>geospatial_lon_max :</span></dt><dd>180.0</dd><dt><span>geospatial_lon_min :</span></dt><dd>-180.0</dd><dt><span>latitude_step :</span></dt><dd>0.083333336</dd><dt><span>longitude_step :</span></dt><dd>0.083333336</dd><dt><span>sw_point_latitude :</span></dt><dd>-89.958336</dd><dt><span>sw_point_longitude :</span></dt><dd>-179.95833</dd><dt><span>spatialResolution :</span></dt><dd>9.276624 km</dd><dt><span>geospatial_lon_resolution :</span></dt><dd>9.276624 km</dd><dt><span>geospatial_lat_resolution :</span></dt><dd>9.276624 km</dd><dt><span>geospatial_lat_units :</span></dt><dd>degrees_north</dd><dt><span>geospatial_lon_units :</span></dt><dd>degrees_east</dd><dt><span>number_of_lines :</span></dt><dd>2160</dd><dt><span>number_of_columns :</span></dt><dd>4320</dd><dt><span>measure :</span></dt><dd>Mean</dd><dt><span>suggested_image_scaling_minimum :</span></dt><dd>0.01</dd><dt><span>suggested_image_scaling_maximum :</span></dt><dd>20.0</dd><dt><span>suggested_image_scaling_type :</span></dt><dd>LOG</dd><dt><span>suggested_image_scaling_applied :</span></dt><dd>No</dd><dt><span>_lastModified :</span></dt><dd>2024-07-16T03:30:21.000Z</dd><dt><span>Conventions :</span></dt><dd>CF-1.6 ACDD-1.3</dd><dt><span>institution :</span></dt><dd>NASA Goddard Space Flight Center, Ocean Ecology Laboratory, Ocean Biology Processing Group</dd><dt><span>standard_name_vocabulary :</span></dt><dd>CF Standard Name Table v36</dd><dt><span>naming_authority :</span></dt><dd>gov.nasa.gsfc.sci.oceandata</dd><dt><span>id :</span></dt><dd>R2022.0.1/L3/AQUA_MODIS.20230525_20230601.L3b.8D.CHL.nc</dd><dt><span>license :</span></dt><dd>https://science.nasa.gov/earth-science/earth-science-data/data-information-policy/</dd><dt><span>creator_name :</span></dt><dd>NASA/GSFC/OBPG</dd><dt><span>publisher_name :</span></dt><dd>NASA/GSFC/OBPG</dd><dt><span>creator_email :</span></dt><dd>data@oceancolor.gsfc.nasa.gov</dd><dt><span>publisher_email :</span></dt><dd>data@oceancolor.gsfc.nasa.gov</dd><dt><span>creator_url :</span></dt><dd>https://oceandata.sci.gsfc.nasa.gov</dd><dt><span>publisher_url :</span></dt><dd>https://oceandata.sci.gsfc.nasa.gov</dd><dt><span>processing_level :</span></dt><dd>L3 Mapped</dd><dt><span>cdm_data_type :</span></dt><dd>grid</dd><dt><span>identifier_product_doi_authority :</span></dt><dd>http://dx.doi.org</dd><dt><span>identifier_product_doi :</span></dt><dd>10.5067/AQUA/MODIS/L3M/CHL/2022</dd><dt><span>keywords :</span></dt><dd>Earth Science &gt; Oceans &gt; Ocean Chemistry &gt; Pigments &gt; Chlorophyll; Earth Science &gt; Oceans &gt; Ocean Chemistry &gt; Chlorophyll</dd><dt><span>keywords_vocabulary :</span></dt><dd>NASA Global Change Master Directory (GCMD) Science Keywords</dd><dt><span>data_bins :</span></dt><dd>3087431</dd><dt><span>data_minimum :</span></dt><dd>0.0031313652</dd><dt><span>data_maximum :</span></dt><dd>86.3219</dd></dl></div></li></ul></div></div></div></div>
+</div>
+<p>Similar to previous steps, we calculate the log10 of the chlorophyll concentration, compute the 15-day average, and perform the reduction.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modis_chla</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">modis_ds</span><span class="p">[</span><span class="s2">&quot;chlor_a&quot;</span><span class="p">])</span>
+<span class="n">modis_chla_mean</span> <span class="o">=</span> <span class="n">modis_chla</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span>
+<span class="n">modis_chla_mean</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;long_name&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;MODIS </span><span class="si">{</span><span class="n">modis_ds</span><span class="p">[</span><span class="s2">&quot;chlor_a&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;long_name&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+        <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;log(</span><span class="si">{</span><span class="n">modis_ds</span><span class="p">[</span><span class="s2">&quot;chlor_a&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;units&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">modis_chla_mean_clip</span> <span class="o">=</span> <span class="n">modis_chla_mean</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="o">*</span><span class="n">lat_bnds</span><span class="p">),</span> <span class="n">lon</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="o">*</span><span class="n">lon_bnds</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modis_chla_mean_clip</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+html[data-theme=dark],
+body[data-theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;chlor_a&#x27; (lat: 264, lon: 468)&gt; Size: 494kB
+dask.array&lt;getitem, shape=(264, 468), dtype=float32, chunksize=(264, 468), chunktype=numpy.ndarray&gt;
+Coordinates:
+  * lat      (lat) float32 1kB 71.96 71.88 71.79 71.71 ... 50.21 50.12 50.04
+  * lon      (lon) float32 2kB -179.0 -178.9 -178.8 ... -140.2 -140.1 -140.0
+Attributes:
+    long_name:  MODIS Chlorophyll Concentration, OCI Algorithm
+    units:      log(mg m^-3)</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'chlor_a'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>lat</span>: 264</li><li><span class='xr-has-index'>lon</span>: 468</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-8bfbbcda-04ef-4ed2-9c32-3a2c60eb6b75' class='xr-array-in' type='checkbox' checked><label for='section-8bfbbcda-04ef-4ed2-9c32-3a2c60eb6b75' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>dask.array&lt;chunksize=(264, 468), meta=np.ndarray&gt;</span></div><div class='xr-array-data'><table>
+    <tr>
+        <td>
+            <table style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 482.62 kiB </td>
+                        <td> 482.62 kiB </td>
+                    </tr>
+                    
+                    <tr>
+                        <th> Shape </th>
+                        <td> (264, 468) </td>
+                        <td> (264, 468) </td>
+                    </tr>
+                    <tr>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 1 chunks in 14 graph layers </td>
+                    </tr>
+                    <tr>
+                        <th> Data type </th>
+                        <td colspan="2"> float32 numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="117" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="67" x2="120" y2="67" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="67" style="stroke-width:2" />
+  <line x1="120" y1="0" x2="120" y2="67" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,67.6923076923077 0.0,67.6923076923077" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="87.692308" font-size="1.0rem" font-weight="100" text-anchor="middle" >468</text>
+  <text x="140.000000" y="33.846154" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,140.000000,33.846154)">264</text>
+</svg>
+        </td>
+    </tr>
+</table></div></div></li><li class='xr-section-item'><input id='section-3c9d0629-bddb-4ae1-b9e2-7dd9b488a220' class='xr-section-summary-in' type='checkbox'  checked><label for='section-3c9d0629-bddb-4ae1-b9e2-7dd9b488a220' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>71.96 71.88 71.79 ... 50.12 50.04</div><input id='attrs-82d4dbb6-8fea-4890-b2d6-949023ebaad1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-82d4dbb6-8fea-4890-b2d6-949023ebaad1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-80390b8f-496d-434d-9f5d-5804b8a1b6b5' class='xr-var-data-in' type='checkbox'><label for='data-80390b8f-496d-434d-9f5d-5804b8a1b6b5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>valid_min :</span></dt><dd>-90.0</dd><dt><span>valid_max :</span></dt><dd>90.0</dd></dl></div><div class='xr-var-data'><pre>array([71.958336, 71.875   , 71.791664, ..., 50.208332, 50.125   , 50.041664],
+      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>-179.0 -178.9 ... -140.1 -140.0</div><input id='attrs-f6832e70-197e-4320-babe-e0e6649a91ab' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f6832e70-197e-4320-babe-e0e6649a91ab' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b3efdcab-0991-49ce-9d93-38803129702f' class='xr-var-data-in' type='checkbox'><label for='data-b3efdcab-0991-49ce-9d93-38803129702f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>valid_min :</span></dt><dd>-180.0</dd><dt><span>valid_max :</span></dt><dd>180.0</dd></dl></div><div class='xr-var-data'><pre>array([-178.95833, -178.875  , -178.79167, ..., -140.20833, -140.125  ,
+       -140.04167], dtype=float32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-4e660852-d80d-4689-a86c-c0f57dc3d43e' class='xr-section-summary-in' type='checkbox'  ><label for='section-4e660852-d80d-4689-a86c-c0f57dc3d43e' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>lat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-0e2fdf9c-1f1b-427f-a575-5bc405242321' class='xr-index-data-in' type='checkbox'/><label for='index-0e2fdf9c-1f1b-427f-a575-5bc405242321' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([ 71.95833587646484,             71.875,  71.79166412353516,
+        71.70833587646484,             71.625,  71.54166412353516,
+        71.45833587646484,             71.375,  71.29166412353516,
+        71.20833587646484,
+       ...
+       50.791664123535156,  50.70833206176758,             50.625,
+       50.541664123535156,  50.45833206176758,             50.375,
+       50.291664123535156,  50.20833206176758,             50.125,
+       50.041664123535156],
+      dtype=&#x27;float32&#x27;, name=&#x27;lat&#x27;, length=264))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-f5c3d333-cb58-4f19-b161-06f03d1f1757' class='xr-index-data-in' type='checkbox'/><label for='index-f5c3d333-cb58-4f19-b161-06f03d1f1757' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-178.9583282470703,           -178.875, -178.7916717529297,
+       -178.7083282470703,           -178.625, -178.5416717529297,
+       -178.4583282470703,           -178.375, -178.2916717529297,
+       -178.2083282470703,
+       ...
+       -140.7916717529297, -140.7083282470703,           -140.625,
+       -140.5416717529297, -140.4583282470703,           -140.375,
+       -140.2916717529297, -140.2083282470703,           -140.125,
+       -140.0416717529297],
+      dtype=&#x27;float32&#x27;, name=&#x27;lon&#x27;, length=468))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-039c1d17-aa4f-4099-a6a2-00171092f8e5' class='xr-section-summary-in' type='checkbox'  checked><label for='section-039c1d17-aa4f-4099-a6a2-00171092f8e5' class='xr-section-summary' >Attributes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>MODIS Chlorophyll Concentration, OCI Algorithm</dd><dt><span>units :</span></dt><dd>log(mg m^-3)</dd></dl></div></li></ul></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot MODIS data</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">regional_plot</span><span class="o">.</span><span class="n">plot_regional_map</span><span class="p">(</span><span class="n">modis_chla_mean_clip</span><span class="p">,</span> <span class="n">min_lon</span><span class="p">,</span> <span class="n">max_lon</span><span class="p">,</span> <span class="n">min_lat</span><span class="p">,</span> <span class="n">max_lat</span><span class="p">,</span> 
+                 <span class="n">title</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> to </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">tspan</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> 
+                 <span class="n">vmin</span><span class="o">=-</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bcf6ace49e1d994de6dc21076b371a69696bcd6b03fadddac58af47724d91a27.png" src="../_images/bcf6ace49e1d994de6dc21076b371a69696bcd6b03fadddac58af47724d91a27.png" />
+</div>
+</div>
+<p><a class="reference internal" href="#Contents"><span class="xref myst">back to top</span></a></p>
+</section>
+<section id="download-and-process-merged-data-oc-cci">
+<h2>4. Download and process merged data (OC CCI)<a class="headerlink" href="#download-and-process-merged-data-oc-cci" title="Link to this heading">#</a></h2>
+<p>The Ocean Colour Climate Change Initiative (OC CCI) composite of merged sensors is a high-resolution dataset that combines ocean color data from multiple satellite sensors. This composite product aims to provide consistent, global coverage of ocean color, which includes key parameters such as chlorophyll concentration, Kd. By merging data from various sensors, it minimizes gaps and inconsistencies, offering a more reliable and comprehensive view of oceanic biogeochemical properties.</p>
+<p>Here we download the daily composit of merged sensor at 1-km resolution from NOAA’s ERDDAP server (<a class="reference external" href="https://comet.nefsc.noaa.gov/erddap/griddap">https://comet.nefsc.noaa.gov/erddap/griddap</a>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import urllib.request </span>
+<span class="c1"># url = &#39;https://comet.nefsc.noaa.gov/erddap/griddap/occci_v6_daily_1km.nc?chlor_a%5B(2024-06-01):1:(2024-06-15)%5D%5B(75.00520833333333):1:(49.99479166666667)%5D%5B(-179.99479166666666):1:(-139.99479166666669)%5D&#39;</span>
+<span class="c1"># urllib.request.urlretrieve(url, &quot;../../data/occci_v6_daily_1km.nc&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">occci_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;../data/occci_v6_daily_1km.nc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">occci_ds</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+html[data-theme=dark],
+body[data-theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 554MB
+Dimensions:    (time: 15, latitude: 2402, longitude: 3841)
+Coordinates:
+  * time       (time) datetime64[ns] 120B 2024-06-01 2024-06-02 ... 2024-06-15
+  * latitude   (latitude) float64 19kB 75.01 74.99 74.98 ... 50.02 50.01 49.99
+  * longitude  (longitude) float64 31kB -180.0 -180.0 -180.0 ... -140.0 -140.0
+Data variables:
+    chlor_a    (time, latitude, longitude) float32 554MB ...
+Attributes: (12/52)
+    cdm_data_type:                     Grid
+    comment:                           See summary attribute
+    Conventions:                       CF-1.10, COARDS, ACDD-1.3
+    creation_date:                     20240807T105724Z
+    creator_email:                     help@esa-oceancolour-cci.org
+    creator_name:                      Plymouth Marine Laboratory
+    ...                                ...
+    time_coverage_end:                 2024-06-15T00:00:00Z
+    time_coverage_resolution:          P1D
+    time_coverage_start:               2024-06-01T00:00:00Z
+    title:                             Ocean Color, ESA CCI Ocean Colour Prod...
+    tracking_id:                       f70a045f-3da8-4ab1-ae9a-7c75a620f07d
+    Westernmost_Easting:               -179.99479166666666</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-962d505f-fcf8-4b24-a9d9-f6a065705052' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-962d505f-fcf8-4b24-a9d9-f6a065705052' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 15</li><li><span class='xr-has-index'>latitude</span>: 2402</li><li><span class='xr-has-index'>longitude</span>: 3841</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-51d1603d-8cff-4cc6-9b7d-dc942a311807' class='xr-section-summary-in' type='checkbox'  checked><label for='section-51d1603d-8cff-4cc6-9b7d-dc942a311807' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2024-06-01 ... 2024-06-15</div><input id='attrs-e4d697b5-9415-4de6-b807-cf8fe29ed5dc' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e4d697b5-9415-4de6-b807-cf8fe29ed5dc' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f3bdac56-1fe3-466b-a2a6-bc4472dd4f8f' class='xr-var-data-in' type='checkbox'><label for='data-f3bdac56-1fe3-466b-a2a6-bc4472dd4f8f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>_CoordinateAxisType :</span></dt><dd>Time</dd><dt><span>actual_range :</span></dt><dd>[1.7172000e+09 1.7184096e+09]</dd><dt><span>axis :</span></dt><dd>T</dd><dt><span>ioos_category :</span></dt><dd>Time</dd><dt><span>long_name :</span></dt><dd>Time</dd><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>time_origin :</span></dt><dd>01-JAN-1970 00:00:00</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2024-06-01T00:00:00.000000000&#x27;, &#x27;2024-06-02T00:00:00.000000000&#x27;,
+       &#x27;2024-06-03T00:00:00.000000000&#x27;, &#x27;2024-06-04T00:00:00.000000000&#x27;,
+       &#x27;2024-06-05T00:00:00.000000000&#x27;, &#x27;2024-06-06T00:00:00.000000000&#x27;,
+       &#x27;2024-06-07T00:00:00.000000000&#x27;, &#x27;2024-06-08T00:00:00.000000000&#x27;,
+       &#x27;2024-06-09T00:00:00.000000000&#x27;, &#x27;2024-06-10T00:00:00.000000000&#x27;,
+       &#x27;2024-06-11T00:00:00.000000000&#x27;, &#x27;2024-06-12T00:00:00.000000000&#x27;,
+       &#x27;2024-06-13T00:00:00.000000000&#x27;, &#x27;2024-06-14T00:00:00.000000000&#x27;,
+       &#x27;2024-06-15T00:00:00.000000000&#x27;], dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>75.01 74.99 74.98 ... 50.01 49.99</div><input id='attrs-5c456724-148a-4ee8-9ed4-defe3d1b05db' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5c456724-148a-4ee8-9ed4-defe3d1b05db' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a16b74b4-e326-4e21-975f-532ff01fa12a' class='xr-var-data-in' type='checkbox'><label for='data-a16b74b4-e326-4e21-975f-532ff01fa12a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>_CoordinateAxisType :</span></dt><dd>Lat</dd><dt><span>actual_range :</span></dt><dd>[49.99479167 75.00520833]</dd><dt><span>axis :</span></dt><dd>Y</dd><dt><span>ioos_category :</span></dt><dd>Location</dd><dt><span>long_name :</span></dt><dd>Latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>valid_max :</span></dt><dd>89.99479166666667</dd><dt><span>valid_min :</span></dt><dd>-89.99479166666666</dd></dl></div><div class='xr-var-data'><pre>array([75.005208, 74.994792, 74.984375, ..., 50.015625, 50.005208, 49.994792])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>longitude</span></div><div class='xr-var-dims'>(longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-180.0 -180.0 ... -140.0 -140.0</div><input id='attrs-fc713235-c416-4f0b-b189-f60a06a51ff2' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fc713235-c416-4f0b-b189-f60a06a51ff2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f38e722b-1bee-43e4-bc33-d086370d930b' class='xr-var-data-in' type='checkbox'><label for='data-f38e722b-1bee-43e4-bc33-d086370d930b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>_CoordinateAxisType :</span></dt><dd>Lon</dd><dt><span>actual_range :</span></dt><dd>[-179.99479167 -139.99479167]</dd><dt><span>axis :</span></dt><dd>X</dd><dt><span>ioos_category :</span></dt><dd>Location</dd><dt><span>long_name :</span></dt><dd>Longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>valid_max :</span></dt><dd>179.99479166666663</dd><dt><span>valid_min :</span></dt><dd>-179.99479166666666</dd></dl></div><div class='xr-var-data'><pre>array([-179.994792, -179.984375, -179.973958, ..., -140.015625, -140.005208,
+       -139.994792])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-6aa2015d-3fe8-4f43-9d58-e110c216ac89' class='xr-section-summary-in' type='checkbox'  checked><label for='section-6aa2015d-3fe8-4f43-9d58-e110c216ac89' class='xr-section-summary' >Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>chlor_a</span></div><div class='xr-var-dims'>(time, latitude, longitude)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-c327226f-b7b0-4455-b55f-bdcda6359e40' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c327226f-b7b0-4455-b55f-bdcda6359e40' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-40a75ec2-cd86-4066-be90-3913f88d21a1' class='xr-var-data-in' type='checkbox'><label for='data-40a75ec2-cd86-4066-be90-3913f88d21a1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>ancillary_variables :</span></dt><dd>chlor_a_log10_rmsd chlor_a_log10_bias</dd><dt><span>colorBarMaximum :</span></dt><dd>30.0</dd><dt><span>colorBarMinimum :</span></dt><dd>0.03</dd><dt><span>colorBarScale :</span></dt><dd>Log</dd><dt><span>ioos_category :</span></dt><dd>Ocean Color</dd><dt><span>long_name :</span></dt><dd>Chlorophyll-a concentration in seawater (not log-transformed), generated by as a blended combination of OCI, OCI2, OC2 and OCx algorithms, depending on water class memberships</dd><dt><span>parameter_vocab_uri :</span></dt><dd>http://vocab.ndg.nerc.ac.uk/term/P011/current/CHLTVOLU</dd><dt><span>standard_name :</span></dt><dd>mass_concentration_of_chlorophyll_a_in_sea_water</dd><dt><span>units :</span></dt><dd>milligram m-3</dd><dt><span>units_nonstandard :</span></dt><dd>mg m^-3</dd></dl></div><div class='xr-var-data'><pre>[138391230 values with dtype=float32]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-96ff18c5-f0d3-438f-a96c-45d5c60ae937' class='xr-section-summary-in' type='checkbox'  ><label for='section-96ff18c5-f0d3-438f-a96c-45d5c60ae937' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-3e96a53d-5d58-4404-b621-88ea163abb5a' class='xr-index-data-in' type='checkbox'/><label for='index-3e96a53d-5d58-4404-b621-88ea163abb5a' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;2024-06-01&#x27;, &#x27;2024-06-02&#x27;, &#x27;2024-06-03&#x27;, &#x27;2024-06-04&#x27;,
+               &#x27;2024-06-05&#x27;, &#x27;2024-06-06&#x27;, &#x27;2024-06-07&#x27;, &#x27;2024-06-08&#x27;,
+               &#x27;2024-06-09&#x27;, &#x27;2024-06-10&#x27;, &#x27;2024-06-11&#x27;, &#x27;2024-06-12&#x27;,
+               &#x27;2024-06-13&#x27;, &#x27;2024-06-14&#x27;, &#x27;2024-06-15&#x27;],
+              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, freq=None))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>latitude</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-54ad7586-c2f2-4308-8881-e26d9825f505' class='xr-index-data-in' type='checkbox'/><label for='index-54ad7586-c2f2-4308-8881-e26d9825f505' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([ 75.00520833333333,  74.99479166666667,          74.984375,
+        74.97395833333333,  74.96354166666667,          74.953125,
+        74.94270833333333,  74.93229166666667,          74.921875,
+        74.91145833333333,
+       ...
+        50.08854166666667,          50.078125, 50.067708333333336,
+        50.05729166666667,          50.046875, 50.036458333333336,
+        50.02604166666667,          50.015625, 50.005208333333336,
+        49.99479166666667],
+      dtype=&#x27;float64&#x27;, name=&#x27;latitude&#x27;, length=2402))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>longitude</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-bc5e79eb-c8aa-4ace-855e-8f046fe01b29' class='xr-index-data-in' type='checkbox'/><label for='index-bc5e79eb-c8aa-4ace-855e-8f046fe01b29' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-179.99479166666666,         -179.984375, -179.97395833333334,
+       -179.96354166666666,         -179.953125, -179.94270833333334,
+       -179.93229166666666,         -179.921875, -179.91145833333334,
+       -179.90104166666666,
+       ...
+       -140.08854166666669,         -140.078125, -140.06770833333334,
+       -140.05729166666669,         -140.046875, -140.03645833333334,
+       -140.02604166666669,         -140.015625, -140.00520833333334,
+       -139.99479166666669],
+      dtype=&#x27;float64&#x27;, name=&#x27;longitude&#x27;, length=3841))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-abb2c3e8-21d1-4467-a85b-718107244c67' class='xr-section-summary-in' type='checkbox'  ><label for='section-abb2c3e8-21d1-4467-a85b-718107244c67' class='xr-section-summary' >Attributes: <span>(52)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>cdm_data_type :</span></dt><dd>Grid</dd><dt><span>comment :</span></dt><dd>See summary attribute</dd><dt><span>Conventions :</span></dt><dd>CF-1.10, COARDS, ACDD-1.3</dd><dt><span>creation_date :</span></dt><dd>20240807T105724Z</dd><dt><span>creator_email :</span></dt><dd>help@esa-oceancolour-cci.org</dd><dt><span>creator_name :</span></dt><dd>Plymouth Marine Laboratory</dd><dt><span>creator_url :</span></dt><dd>https://esa-oceancolour-cci.org</dd><dt><span>date_created :</span></dt><dd>2024-03-18T17:58:43Z</dd><dt><span>Easternmost_Easting :</span></dt><dd>-139.99479166666669</dd><dt><span>geospatial_lat_max :</span></dt><dd>75.00520833333333</dd><dt><span>geospatial_lat_min :</span></dt><dd>49.99479166666667</dd><dt><span>geospatial_lat_resolution :</span></dt><dd>0.010416666666666666</dd><dt><span>geospatial_lat_units :</span></dt><dd>degrees_north</dd><dt><span>geospatial_lon_max :</span></dt><dd>-139.99479166666669</dd><dt><span>geospatial_lon_min :</span></dt><dd>-179.99479166666666</dd><dt><span>geospatial_lon_resolution :</span></dt><dd>0.010416666666666664</dd><dt><span>geospatial_lon_units :</span></dt><dd>degrees_east</dd><dt><span>git_commit_hash :</span></dt><dd>96e2d8a5fb609f69dbdde86199b5de144d1026ec</dd><dt><span>grid_mapping_name :</span></dt><dd>latitude_longitude</dd><dt><span>history :</span></dt><dd>Wed Aug  7 12:16:20 2024: ncks -x -v crs standardised_geo/ESACCI-OC-L3S-OC_PRODUCTS-MERGED-1D_DAILY_1km_GEO_PML_OCx_QAA-20240726-fv6.0_1km.nc ESACCI-OC-L3S-OC_PRODUCTS-MERGED-1D_DAILY_1km_GEO_PML_OCx_QAA-20240726-fv6.0_1km.nc
+Source data were: NASA OBPG SeaWiFS level1 R2018.0 LAC and GAC [A/C via l2gen], NASA OBPG VIIRS L1 R2018.0  [A/C via polymer], NASA OBPG MODIS Aqua L1 R2018.0 (A/C via polymer), ESA MERIS L1B (3rd reprocessing inc OCL correction) [Polymer v4.12]  and OLCI L1B [Polymer v4.12]; Derived products were mainly produced with functions validated from the current NASA SeaDAS release and some custom implementations.  Uncertainty generation determined by the fuzzy classifier scheme of Tim Moore (2009) as updated by Jackson et al. (2017) and Jackson et al. (in prep).
+2024-08-08T01:32:16Z https://www.oceancolour.org/thredds/dodsC/CCI_ALL-v6.0-1km-DAILY
+2024-08-08T01:32:16Z http://comet.nefsc.noaa.gov/erddap/griddap/occci_v6_daily_1km.nc?chlor_a%5B(2024-06-01):1:(2024-06-15)%5D%5B(75.00520833333333):1:(49.99479166666667)%5D%5B(-179.99479166666666):1:(-139.99479166666669)%5D</dd><dt><span>id :</span></dt><dd>ESACCI-OC-L3S-OC_PRODUCTS-MERGED-1D_DAILY_1km_GEO_PML_OCx_QAA-20240726-fv6.0_1km.nc</dd><dt><span>infoUrl :</span></dt><dd>https://esa-oceancolour-cci.org/</dd><dt><span>institution :</span></dt><dd>Plymouth Marine Laboratory</dd><dt><span>keywords :</span></dt><dd>1km, 490nm, absorption, adapted, adg_443, air, algorithm, algorithms, all, all-v6.0-1km-daily, aph_443, aqua, area, array, array-data, atmosphere, atmospheric, atot_443, attenuation, bbw, best, bin, blended, cci, cell, chemistry, chlor_a, chlorophyll, chlorophyll-a, class, classes, classification, coefficient, color, colour, combination, comprehensive, concentration, contributing, count, coverage, custom, custom-developed, daily, data, day, defined, depending, derived, determined, detrital, developed, dissolved, downwelling, earth, Earth Science &gt; Atmosphere &gt; Atmospheric Radiation &gt; Radiative Flux, Earth Science &gt; Oceans &gt; Ocean Chemistry &gt; Chlorophyll, Earth Science &gt; Oceans &gt; Ocean Optics &gt; Absorption, Earth Science &gt; Oceans &gt; Ocean Optics &gt; Attenuation/Transmission, Earth Science &gt; Oceans &gt; Ocean Optics &gt; Radiance, emerging, equation, esa, field, field-of-view, flux, following, fuzzy, gac, generated, global, imager, imager/radiometer, imaging, infrared, irradiance, jackson, kd_490, laboratory, lac, large, latitude, leaving, lee, local, log, log-transformed, longitude, marine, mass, mass_concentration_of_chlorophyll_a_in_sea_water, material, membership, memberships, merged, meris, MERIS_nobs, model, moderate, modis, MODISA_nobs, moore, normalised, not, number, observation, observations, oc2, ocean, ocean color, ocean colour, oceans, oci, oci2, ocx, olci, OLCI_A_nobs, OLCI_B_nobs, optical, optical properties, optics, parameterised, phytoplankton, plymouth, prep, product, properties, qaa, quality, radiance, radiation, radiative, radiometer, ratio, reflectance, represent, resolution, Rrs_412, Rrs_443, Rrs_490, Rrs_510, Rrs_560, Rrs_665, satellite, science, sea, sea-wide, seadas, seawater, seawifs, SeaWiFS_nobs, sensor, spectroradiometer, statistics, stewardship, suite, surface, surface_ratio_of_upwelling_radiance_emerging_from_sea_water_to_downwelling_radiative_flux_in_air, system, tim, time, total, total_nobs, transformed, transmission, updates, upwelling, using, v6.0, view, viirs, VIIRS_nobs, visible, volume, volume_absorption_coefficient_of_radiative_flux_in_sea_water, volume_attenuation_coefficient_of_downwelling_radiative_flux_in_sea_water, water, water-leaving, water_class1, water_class10, water_class11, water_class12, water_class13, water_class14, water_class2, water_class3, water_class4, water_class5, water_class6, water_class7, water_class8, water_class9, wide, with, within, zhang</dd><dt><span>keywords_vocabulary :</span></dt><dd>GCMD Science Keywords</dd><dt><span>license :</span></dt><dd>ESA CCI Data Policy: free and open access.  When referencing, please use: Ocean Colour Climate Change Initiative dataset, Version &lt;Version Number&gt;, European Space Agency, available online at https://esa-oceancolour-cci.org.  We would also appreciate being notified of publications so that we can list them on the project website at https://esa-oceancolour-cci.org/?q=publications</dd><dt><span>naming_authority :</span></dt><dd>uk.ac.pml</dd><dt><span>NCO :</span></dt><dd>netCDF Operators version 4.7.5 (Homepage = http://nco.sf.net, Code = https://github.com/nco/nco)</dd><dt><span>Northernmost_Northing :</span></dt><dd>75.00520833333333</dd><dt><span>number_of_bands_used_to_classify :</span></dt><dd>4</dd><dt><span>number_of_optical_water_types :</span></dt><dd>14</dd><dt><span>platform :</span></dt><dd>Orbview-2,Aqua,Envisat,Suomi-NPP, Sentinel-3a, Sentinel-3b</dd><dt><span>processing_level :</span></dt><dd>Level-3</dd><dt><span>product_version :</span></dt><dd>6.0_1km</dd><dt><span>project :</span></dt><dd>Climate Change Initiative - European Space Agency</dd><dt><span>references :</span></dt><dd>https://esa-oceancolour-cci.org/</dd><dt><span>sensor :</span></dt><dd>SeaWiFS,MODIS,MERIS,VIIRS,OLCI</dd><dt><span>sensors_present :</span></dt><dd>OLCIa OLCIb</dd><dt><span>source :</span></dt><dd>NASA SeaWiFS  L1A and L2 R2018.0 LAC and GAC, MODIS-Aqua L1A and L2 R2018.0, MERIS L1B 3rd reprocessing inc OCL corrections, NASA VIIRS L1A and L2 R2018.0, OLCI L1B</dd><dt><span>sourceUrl :</span></dt><dd>https://www.oceancolour.org/thredds/dodsC/CCI_ALL-v6.0-1km-DAILY</dd><dt><span>Southernmost_Northing :</span></dt><dd>49.99479166666667</dd><dt><span>spatial_resolution :</span></dt><dd>1km nominal at equator</dd><dt><span>standard_name_vocabulary :</span></dt><dd>CF Standard Name Table v70</dd><dt><span>summary :</span></dt><dd>Data products generated by the Ocean Colour component of the European Space Agency Climate Change Initiative project. These files are daily composites of merged sensor (MERIS, Moderate Resolution Imaging Spectroradiometer (MODIS) Aqua, Sea-Wide Field-of-View Sensor (SeaWiFS) Local Area Coverage (LAC) &amp; Global Area Coverage (GAC), Visible and Infrared Imager/Radiometer Suite (VIIRS), OLCI) products.  MODIS Aqua and SeaWiFS were band-shifted and bias-corrected to MERIS bands and values using a temporally and spatially varying scheme based on the overlap years of 2003-2007.  VIIRS was band-shifted and bias-corrected in a second stage against the MODIS Rrs that had already been corrected to MERIS levels, for the overlap period 2012-2013; and at the third stage OLCI was bias corrected against already corrected MODIS, for overlap period 2016-07-01 to 2019-06-30.  VIIRS, MODIS, SeaWiFS and MERIS Rrs were derived from a combination of NASA&#x27;s l2gen (for basic sensor geometry corrections, etc) and HYGEOS Polymer v4.12 (for atmospheric correction). OLCI Rrs were sourced at L1b (already geometrically corrected) and processed with polymer.  The Rrs were binned to a sinusoidal 1km level-3 grid, and later to 1km geographic projection, by Brockmann Consult&#x27;s SNAP.  Derived products were generally computed with the standard algorithmsthrough SeaDAS.  QAA IOPs were derived using the standard SeaDAS algorithm but with a modified backscattering table to match that used in the bandshifting.  The final chlorophyll is a combination of OCI, OCI2, OC2 and OCx, depending on the water class memberships.  Uncertainty estimates were added using the fuzzy water classifier and uncertainty estimation algorithm of Tim Moore as documented in Jackson et al (2017). and updated accorsing to Jackson et al. (in prep).</dd><dt><span>testOutOfDate :</span></dt><dd>now-40days</dd><dt><span>time_coverage_duration :</span></dt><dd>P1D</dd><dt><span>time_coverage_end :</span></dt><dd>2024-06-15T00:00:00Z</dd><dt><span>time_coverage_resolution :</span></dt><dd>P1D</dd><dt><span>time_coverage_start :</span></dt><dd>2024-06-01T00:00:00Z</dd><dt><span>title :</span></dt><dd>Ocean Color, ESA CCI Ocean Colour Products (v6.0), Global 0.0104°, Daily, 1997-present</dd><dt><span>tracking_id :</span></dt><dd>f70a045f-3da8-4ab1-ae9a-7c75a620f07d</dd><dt><span>Westernmost_Easting :</span></dt><dd>-179.99479166666666</dd></dl></div></li></ul></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">occci_chla</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">occci_ds</span><span class="p">[</span><span class="s1">&#39;chlor_a&#39;</span><span class="p">])</span>
+<span class="c1"># Calculate the temporal mean</span>
+<span class="n">occci_chla_mean</span> <span class="o">=</span> <span class="n">occci_chla</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+
+<span class="n">occci_chla_mean</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;long_name&quot;</span><span class="p">:</span> <span class="s2">&quot;OCCCI Chlorophyll-a Concentration&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s1">&#39;lg[lg[</span><span class="si">{}</span><span class="s1">]]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">occci_ds</span><span class="p">[</span><span class="s1">&#39;chlor_a&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;units&quot;</span><span class="p">]),</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot OCCCI data</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">regional_plot</span><span class="o">.</span><span class="n">plot_regional_map</span><span class="p">(</span><span class="n">occci_chla_mean</span><span class="p">,</span> <span class="n">min_lon</span><span class="p">,</span> <span class="n">max_lon</span><span class="p">,</span> <span class="n">min_lat</span><span class="p">,</span> <span class="n">max_lat</span><span class="p">,</span> 
+                 <span class="n">title</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> to </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">temporal</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">temporal</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> 
+                 <span class="n">vmin</span><span class="o">=-</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a18223e6fb119bbeece49d0f27e7d382fb7d6069ead5127f3a73c7acfc44b480.png" src="../_images/a18223e6fb119bbeece49d0f27e7d382fb7d6069ead5127f3a73c7acfc44b480.png" />
+</div>
+</div>
+<p><a class="reference internal" href="#Contents"><span class="xref myst">back to top</span></a></p>
+</section>
+<section id="combine-the-plots-side-by-side">
+<h2>5. Combine the plots side by side<a class="headerlink" href="#combine-the-plots-side-by-side" title="Link to this heading">#</a></h2>
+<p>In this step, we will generate a 2x2 figure with four subplots.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate central longitude and latitude</span>
+<span class="n">central_longitude</span> <span class="o">=</span> <span class="p">(</span><span class="n">min_lon</span> <span class="o">+</span> <span class="n">max_lon</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="n">central_latitude</span> <span class="o">=</span> <span class="p">(</span><span class="n">min_lat</span> <span class="o">+</span> <span class="n">max_lat</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="c1"># Define projection</span>
+<span class="n">projection</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">LambertConformal</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="n">central_longitude</span><span class="p">,</span> 
+                                   <span class="n">central_latitude</span><span class="o">=</span><span class="n">central_latitude</span><span class="p">)</span>
+
+<span class="c1"># Create the figure and axes</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> 
+                        <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;projection&#39;</span><span class="p">:</span> <span class="n">projection</span><span class="p">})</span>
+
+<span class="c1"># List of datasets and titles</span>
+<span class="n">datasets</span> <span class="o">=</span> <span class="p">[</span><span class="n">array_mean_clip</span><span class="p">,</span> <span class="n">viirs_chla_mean</span><span class="p">,</span> <span class="n">modis_chla_mean_clip</span><span class="p">,</span> <span class="n">occci_chla_mean</span><span class="p">]</span>
+<span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> to </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">temporal</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">temporal</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+          <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> to </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">temporal</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">temporal</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+          <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> to </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tspan</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">tspan</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+          <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> to </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">temporal</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">temporal</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+
+<span class="c1"># Loop through datasets and axes to plot each one</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">datasets</span><span class="p">,</span> <span class="n">titles</span><span class="p">)):</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">i</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="n">regional_plot</span><span class="o">.</span><span class="n">plot_regional_map</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">min_lon</span><span class="p">,</span> <span class="n">max_lon</span><span class="p">,</span> <span class="n">min_lat</span><span class="p">,</span> <span class="n">max_lat</span><span class="p">,</span> 
+                                    <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0bb21fddc4237563a96f7a7908f0bc47b12da2cbc3f7349956ec47dc8c0d138d.png" src="../_images/0bb21fddc4237563a96f7a7908f0bc47b12da2cbc3f7349956ec47dc8c0d138d.png" />
+</div>
+</div>
+<p><a class="reference internal" href="#Contents"><span class="xref myst">back to top</span></a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="PACE_Cyano.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Exploring PACE’s Role in Cyanobacteria Detection</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="POC_data_manipulation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">PACE data simple manipulation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contents">Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-process-pace-oci-data">1. Download and Process PACE OCI Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-process-snpp-viirs-data">2. Download and process SNPP VIIRS data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-process-modis-data">3. Download and process MODIS data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-process-merged-data-oc-cci">4. Download and process merged data (OC CCI)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combine-the-plots-side-by-side">5. Combine the plots side by side</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PACEToolkit HackWeek 2024 team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
